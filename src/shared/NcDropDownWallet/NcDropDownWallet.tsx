@@ -66,13 +66,13 @@ const NcDropDownWallet: FC<NcDropDownProps> = ({
           className={`px-1 py-3 text-sm text-neutral-6000 dark:text-neutral-300 absolute ${panelMenusClass} right-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl shadow-lg dark:ring-white ring-opacity-5 dark:ring-opacity-10 z-30`}
         >
             <div className="flex flex-col justify-center items-center mb-8">
-                <h1>Account 1</h1>
-                <h2 className="text-gray-400">0x21879847933249875be</h2>
+                <h1 className="text-black">Account 1</h1>
+                <h2 className="text-slate-400">0x21879847933249875be</h2>
             </div>
             <div className="flex flex-col justify-center items-center mb-8">
                 <FaEthereum className="mb-8" size={40}/>
-                <h2>1 ETH</h2>
-                <h3>kurs Dollar</h3>
+                <h1 className="text-black">1 ETH</h1>
+                <h3 className="text-slate-400">$1,042</h3>
             </div>
         </Menu.Items>
       </Transition>
