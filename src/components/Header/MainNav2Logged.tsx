@@ -37,7 +37,7 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
     <div className={`nc-MainNav2Logged relative z-10 ${"onTop "}`}>
       <div className="container py-1 relative flex justify-between items-center space-x-4 xl:space-x-8">
         <div className="flex justify-start flex-grow items-center space-x-3 sm:space-x-8 lg:space-x-10">
-          <Logo />
+          <Logo imgDropShadow={true}/>
           {/* <div className="hidden sm:block flex-grow max-w-xs">
             <form action="" method="POST" className="relative">
               <Input

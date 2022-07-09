@@ -6,12 +6,14 @@ import logoLightImg from "images/LOGO-09.png";
 export interface LogoProps {
   img?: string;
   imgLight?: string;
+  imgDropShadow?: boolean;
   className?: string;
 }
 
 const Logo: React.FC<LogoProps> = ({
   img = logoImg,
   imgLight = logoLightImg,
+  imgDropShadow = false,
   className = "",
 }) => {
   return (
@@ -24,6 +26,7 @@ const Logo: React.FC<LogoProps> = ({
       {img ? (
         <img
           className={`block max-h-24 ${imgLight ? "dark:hidden" : ""}`}
+          style= {{filter: imgDropShadow ? 'drop-shadow(2px 4px 8px white)' : 'drop-shadow(0px 0px 0px black)'}}
           src={img}
           alt="Logo"
         />
