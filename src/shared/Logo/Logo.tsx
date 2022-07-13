@@ -26,7 +26,7 @@ const Logo: React.FC<LogoProps> = ({
       {img ? (
         <img
           className={`block max-h-24 ${imgLight ? "dark:hidden" : ""}`}
-          style= {{filter: imgDropShadow ? 'drop-shadow(2px 3px 2px white)' : 'drop-shadow(0px 0px 0px black)'}}
+          style= {{filter: imgDropShadow ? 'drop-shadow(0px 0px 2px white)' : 'drop-shadow(0px 0px 0px black)'}}
           src={img}
           alt="Logo"
         />
@@ -37,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({
         <img
           className="hidden max-h-24 dark:block"
           src={imgLight}
-          style= {{filter: imgDropShadow ? 'drop-shadow(2px 3px 2px white)' : 'drop-shadow(0px 0px 0px black)'}}
+          style= {{filter: imgDropShadow ? 'drop-shadow(0px 0px 2px white)' : 'drop-shadow(0px 0px 0px black)'}}
           alt="Logo-Light"
         />
       )}

@@ -1,4 +1,4 @@
-import { nftsImgs, _getPersonNameRd } from "contains/fakeData";
+import { nftsImgs2, _getPersonNameRd } from "contains/fakeData";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "shared/Avatar/Avatar";
@@ -12,7 +12,7 @@ export interface CollectionCard2Props {
 
 const CollectionCard2: FC<CollectionCard2Props> = ({
   className,
-  imgs = [nftsImgs[9], nftsImgs[10], nftsImgs[11], nftsImgs[8]],
+  imgs = [nftsImgs2[9], nftsImgs2[10], nftsImgs2[11], nftsImgs2[8]],
 }) => {
   return (
     <div className={`CollectionCard2 group relative ${className}`}>

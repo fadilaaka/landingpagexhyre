@@ -6,7 +6,7 @@ import CardNFT from "components/CardNFT";
 import Pagination from "shared/Pagination/Pagination";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import collectionBanner from "images/nfts/collectionBanner.png";
-import { nftsImgs } from "contains/fakeData";
+import { nftsImgs2 } from "contains/fakeData";
 import NftMoreDropdown from "components/NftMoreDropdown";
 import ButtonDropDownShare from "components/ButtonDropDownShare";
 import TabFilters from "components/TabFilters";
@@ -41,7 +41,7 @@ const PageCollection: FC<PageCollectionProps> = ({ className = "" }) => {
             <div className="flex flex-col sm:flex-row md:block sm:items-start sm:justify-between">
               <div className="w-40 sm:w-48 md:w-56 xl:w-60">
                 <NcImage
-                  src={nftsImgs[2]}
+                  src={nftsImgs2[2]}
                   containerClassName="aspect-w-1 aspect-h-1 rounded-3xl overflow-hidden"
                 />
               </div>

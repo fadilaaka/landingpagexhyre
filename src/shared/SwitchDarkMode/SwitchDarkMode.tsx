@@ -27,7 +27,7 @@ const SwitchDarkMode: React.FC<SwitchDarkModeProps> = ({ className = "" }) => {
   };
 
   const toLight = () => {
-    setIsDarkMode(true);
+    setIsDarkMode(false);
     const root = document.querySelector("html");
     if (!root) return;
     root.classList.remove("dark");
@@ -38,7 +38,6 @@ const SwitchDarkMode: React.FC<SwitchDarkModeProps> = ({ className = "" }) => {
     if (localStorage.theme === "light") {
       toDark();
     } else {
-      // toDark();
       toLight();
     }
   }

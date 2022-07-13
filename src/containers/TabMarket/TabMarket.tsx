@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Tab, Transition } from "@headlessui/react";
-import { nftName, nftsImgs, personNames } from "contains/fakeData";
+import { nftName, nftsImgs2, personNames } from "contains/fakeData";
 import Avatar from "shared/Avatar/Avatar";
 import VerifyIcon from "components/VerifyIcon";
 import NcImage from "shared/NcImage/NcImage";
@@ -12,23 +12,23 @@ import NavVoting from "shared/Navigation/NavVoting";
 // const plans = [
 //   {
 // name: nftName[],
-//     featuredImage: nftsImgs[0],
+//     featuredImage: nftsImgs2[0],
 //   },
 //   {
 //     name: "Crypto Legend - Doctor",
-//     featuredImage: nftsImgs[4],
+//     featuredImage: nftsImgs2[4],
 //   },
 //   {
 //     name: "Crypto Legend - Lecturer",
-//     featuredImage: nftsImgs[3],
+//     featuredImage: nftsImgs2[3],
 //   },
 //   {
 //     name: "Crypto Legend - Teacher",
-//     featuredImage: nftsImgs[1],
+//     featuredImage: nftsImgs2[1],
 //   },
 //   {
 //     name: "Crypto Legend - Student",
-//     featuredImage: nftsImgs[2],
+//     featuredImage: nftsImgs2[2],
 //   },
 // ];
 
@@ -36,37 +36,37 @@ const plans2 = [
   {
     name: nftName[12],
     creator: personNames[0],
-    featuredImage: nftsImgs[0],
+    featuredImage: nftsImgs2[0],
   },
   {
     name: nftName[2],
     creator: personNames[1],
-    featuredImage: nftsImgs[4],
+    featuredImage: nftsImgs2[4],
   },
   {
     name: nftName[5],
     creator: personNames[2],
-    featuredImage: nftsImgs[3],
+    featuredImage: nftsImgs2[3],
   },
   {
     name: nftName[6],
     creator: personNames[3],
-    featuredImage: nftsImgs[1],
+    featuredImage: nftsImgs2[1],
   },
   {
     name: nftName[0],
     creator: personNames[4],
-    featuredImage: nftsImgs[2],
+    featuredImage: nftsImgs2[2],
   },
   {
     name: nftName[5],
     creator: personNames[8],
-    featuredImage: nftsImgs[1],
+    featuredImage: nftsImgs2[1],
   },
   {
     name: nftName[11],
     creator: personNames[4],
-    featuredImage: nftsImgs[5],
+    featuredImage: nftsImgs2[5],
   },
 ];
 

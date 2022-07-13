@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import TabFilters from "components/TabFilters";
 import { Transition } from "@headlessui/react";
+import { useHistory, useParams } from "react-router-dom";
 
 export interface HeaderFilterSearchPageProps {
   className?: string;
@@ -14,8 +15,10 @@ const HeaderFilterSearchPage: FC<HeaderFilterSearchPageProps> = ({
   className = "mb-12",
 }) => {
   const [isOpen, setIsOpen] = React.useState(true);
-  const [tabActive, setTabActive] = React.useState("Alif Homes");
+  const url = window.location.pathname.split("/");
 
+  const [tabActive, setTabActive] = React.useState(url[2]);
+  const redirect = useHistory();
   return (
     <div className={`flex flex-col relative ${className}`}>
       <div className="flex flex-col lg:flex-row lg:items-center justify-end space-y-6 lg:space-y-0 lg:space-x-2 ">
@@ -23,17 +26,15 @@ const HeaderFilterSearchPage: FC<HeaderFilterSearchPageProps> = ({
           className="sm:space-x-2"
           containerClassName="relative flex w-full overflow-x-auto text-sm md:text-base hiddenScrollbar"
         >
-          {["Alif Homes", "Newton"].map(
-            (item, index) => (
-              <NavItem
-                key={index}
-                isActive={tabActive === item}
-                onClick={() => setTabActive(item)}
-              >
-                {item}
-              </NavItem>
-            )
-          )}
+          {["Newton", "Alif"].map((item, index) => (
+            <NavItem
+              key={index}
+              isActive={tabActive === item.toLowerCase()}
+              onClick={() => redirect.push(`/${url[1]}/${item.toLowerCase()}`)}
+            >
+              {item}
+            </NavItem>
+          ))}
         </Nav>
         <span className="block flex-shrink-0 text-right">
           <ButtonPrimary

@@ -22,17 +22,33 @@ import PageUploadItem from "containers/PageUploadItem";
 import PageConnectWallet from "containers/PageConnectWallet";
 import PageHome2 from "containers/PageHome/PageHome2";
 import LandingPage from "containers/LandingPage/LandingPage";
-import PrimaryMarket from "containers/PrimaryMarket";
-import SecondaryMarket from "containers/SecondaryMarket";
+// import PrimaryMarket from "containers/PrimaryMarket/AlifPage";
+// import SecondaryMarket from "containers/SecondaryMarket/AlifPage2";
 import PageVoting from "containers/PageVoting";
 import NftDetailPage2 from "containers/NftDetailPage/NftDetailPage2";
+import NewtonPage from "containers/PrimaryMarket/NewtonPage";
+import AlifPage from "containers/PrimaryMarket/AlifPage";
+import NewtonPage2 from "containers/SecondaryMarket/NewtonPage2";
+import AlifPage2 from "containers/SecondaryMarket/AlifPage2";
+import DashboardUser from "containers/DashboardUser/DashboardUser";
 
 export const pages: Page[] = [
   { path: "/", exact: true, component: LandingPage },
-  { path: "/primary-market", exact: true, component: PrimaryMarket },
-  { path: "/secondary-market", exact: true, component: SecondaryMarket },
-  { path: "/primary-market/:id", exact: true, component: NftDetailPage },
-  { path: "/secondary-market/:id", exact: true, component: NftDetailPage2 },
+  // { path: "/primary-market", exact: true, component: PrimaryMarket },
+  // { path: "/secondary-market", exact: true, component: SecondaryMarket },
+  // { path: "/primary-market/:id", exact: true, component: NftDetailPage },
+  // { path: "/secondary-market/:id", exact: true, component: NftDetailPage2 },
+  { path: "/dashboard-user", exact: true, component: DashboardUser },
+  { path: "/primary-market/newton", exact: true, component: NewtonPage },
+  { path: "/primary-market/alif", exact: true, component: AlifPage },
+  { path: "/secondary-market/newton", exact: true, component: NewtonPage2 },
+  { path: "/secondary-market/alif", exact: true, component: AlifPage2 },
+  { path: "/primary-market/:type/:id", exact: true, component: NftDetailPage },
+  {
+    path: "/secondary-market/:type/:id",
+    exact: true,
+    component: NftDetailPage2,
+  },
   { path: "/nft-voting", exact: true, component: PageVoting },
   // { path: "/", exact: true, component: PageHome2 },
   { path: "/#", exact: true, component: PageHome2 },

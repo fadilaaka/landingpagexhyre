@@ -68,11 +68,11 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                             <div className="flex-1 justify-center text-center my-4">
                                 <span className='text-[2rem] font-semibold text-black text-center dark:text-white' data-aos="fade-down" data-aos-duration="2000">The First Secured Real Estate Exchange Market in The World</span>
                                 <div className="flex flex-row items-center justify-center space-x-12 mt-20" data-aos="zoom-in" data-aos-duration='1500' data-aos-delay='1500'>
-                                    <ButtonPrimary className="bg-[#FFD447] opacity-100 hover:opacity-50 hover:bg-[#FFD447] dark:bg-[#F0A500]" href="/primary-market">
+                                    <ButtonPrimary className="bg-[#FFD447] opacity-100 hover:opacity-50 hover:bg-[#FFD447] dark:bg-[##D9A443]" href="/primary-market/newton">
                                         <FaStore color="#000000"/>
                                         <span className="ml-2 text-center text-black">Primary Market</span>
                                     </ButtonPrimary>
-                                    <ButtonPrimary className="bg-[#000000] opacity-100 hover:opacity-50 hover:bg-[#000000] dark:bg-[#FAF3E3]" href="/secondary-market">
+                                    <ButtonPrimary className="bg-[#000000] opacity-100 hover:opacity-50 hover:bg-[#000000] dark:bg-[#FAF3E3]" href="/secondary-market/newton">
                                         <FaStoreAlt className="dark:text-black"/>
                                         <span className="ml-2 text-center text-white dark:text-black">Secondary Market</span>
                                     </ButtonPrimary>
@@ -102,11 +102,11 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                             </div>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
                             <div className="flex flex-row items-center justify-center space-x-4 mt-8 mb-8">
-                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/primary-market">
+                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/primary-market/newton">
                                     {/* <FaStore className="text-black"/> */}
                                     <span className="text-center text-black">Newton Primary Market</span>
                                 </ButtonPrimary>
-                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market">
+                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market/newton">
                                     {/* <FaStoreAlt className="text-black"/> */}
                                     <span className="text-center text-black">Newton Secondary Market</span>
                                 </ButtonPrimary>
@@ -119,11 +119,11 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                             </div>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
                             <div className="group flex flex-row items-center justify-center space-x-4 mt-8 mb-8">
-                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/primary-market">
+                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/primary-market/alif">
                                     {/* <FaStore className="text-black"/> */}
                                     <span className="text-center text-black">Alif Homes Primary Market</span>
                                 </ButtonPrimary>
-                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market">
+                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market/alif">
                                     {/* <FaStoreAlt className="text-black"/> */}
                                     <span className="text-center text-black">Alif Homes Secondary Market</span>
                                 </ButtonPrimary>

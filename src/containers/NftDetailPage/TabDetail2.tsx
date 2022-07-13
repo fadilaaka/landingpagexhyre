@@ -33,13 +33,13 @@ const TabDetail2 = () => {
                     <span className="font-medium text-neutral-900 dark:text-neutral-200 ml-1 mr-2">
                       Martoutaa
                     </span>
-                    <span className="ml-1">20% of share</span>
+                    <span className="ml-1">{Math.ceil(Math.random() * 100)}% of share</span>
                   </div>
                   <div className="inline-block absolute price mt-7">
                     <span className="ml-1">Last :</span>
-                    <span className="ml-1 text-green-500">1000 REX</span> <span className="mx-1">||</span>
+                    <span className="ml-1 text-green-500">{Math.ceil(Math.random() * 300)} REX</span> <span className="mx-1">||</span>
                     <span className="ml-1">Open Price :</span>
-                    <span className="ml-1 text-green-500">1200 REX</span>
+                    <span className="ml-1 text-green-500">{Math.ceil(Math.random() * 700)} REX</span>
                   </div>
                 </span>
                 <span className="text-xs mt-8">Jun 14 - 4:12 PM</span>
@@ -122,7 +122,7 @@ const TabDetail2 = () => {
     <div className="w-full pdx-2 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex justify-start pd-1 space-x-2.5 rounded-full bordedr border-neutral-300 dark:border-neutral-500">
-          <h3 className="font-semibold text-white text-xl">Ownership Bid</h3>
+          <h3 className="font-semibold text-black dark:text-white text-xl">Ownership Bid</h3>
           {TABS.map(
             (tab) => ""
             // <Tab

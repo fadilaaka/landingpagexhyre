@@ -8,13 +8,17 @@ import LikeButton from "./LikeButton";
 import Prices from "./Prices";
 import { ClockIcon } from "@heroicons/react/outline";
 import ItemTypeVideoIcon from "./ItemTypeVideoIcon";
+import Prices2 from "./Prices2";
+import getRandomInt from "utils/getRandomInt";
 
 export interface CardNFTProps {
   className?: string;
+  type?: any;
   isLiked?: boolean;
+  id?: any;
 }
 
-const CardNFT1: FC<CardNFTProps> = ({ className = "", isLiked }) => {
+const CardNFT1: FC<CardNFTProps> = ({ className = "", isLiked, type, id }) => {
   const renderAvatars = () => {
     return (
       <div className="flex -space-x-1 ">
@@ -38,9 +42,12 @@ const CardNFT1: FC<CardNFTProps> = ({ className = "", isLiked }) => {
     );
   };
 
-  const randInt = (Math.floor(Math.random() * nftsImgs.length))
-  const nftItemImg = nftsImgs[randInt];
-  const nftItemName = nftName[randInt];
+  // const randInt = Math.floor(Math.random() * nftsImgs["alif"].length);
+  const price = Math.ceil(Math.random() * 777);
+  
+  const nftType = type === "alif" ? nftsImgs["alif"] : nftsImgs["newton"];
+  const nftRandom = nftType[id];
+  const url = window.location.pathname.split("/");
 
   return (
     <div
@@ -51,7 +58,7 @@ const CardNFT1: FC<CardNFTProps> = ({ className = "", isLiked }) => {
         <div>
           <NcImage
             containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0 rounded-3xl overflow-hidden z-0"
-            src={nftItemImg}
+            src={nftRandom[0]}
             className="object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-300 ease-in-out will-change-transform"
           />
         </div>
@@ -74,23 +81,23 @@ const CardNFT1: FC<CardNFTProps> = ({ className = "", isLiked }) => {
             {Math.floor(Math.random() * 90) + 10} in stock
           </span>
         </div>
-        <h2 className={`text-lg font-medium`}>{nftItemName}</h2>
+        <h2 className={`text-lg font-medium`}>{nftRandom[1]}</h2>
 
         <div className="w-2d4 w-full border-b border-neutral-100 dark:border-neutral-700"></div>
 
         <div className="flex justify-between items-end ">
-          <Prices labelTextClassName="bg-white dark:bg-neutral-900 dark:group-hover:bg-neutral-800 group-hover:bg-neutral-50" />
+        <Prices labelTextClassName="bg-white dark:bg-neutral-900 dark:group-hover:bg-neutral-800 group-hover:bg-neutral-50" id={id} />
           <div className="flex items-center text-sm text-neutral-500 dark:text-neutral-400">
             <ClockIcon className="w-4 h-4" />
             <span className="ml-1 mt-0.5">
-              {Math.floor(Math.random() * 20) + 1} hours left
+            {nftType[id][3]} days left
             </span>
           </div>
         </div>
       </div>
 
       <Link
-        to={`/primary-market/${nftName.indexOf(nftItemName)}`}
+        to={`/primary-market/${url[2]}/${nftType.indexOf(nftRandom)}`}
         className="absolute inset-0"
       ></Link>
     </div>

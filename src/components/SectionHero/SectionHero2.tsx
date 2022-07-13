@@ -3,7 +3,7 @@ import imagePng from "images/hero-right-3.png";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import HeroSearchForm from "components/HeroSearchForm/HeroSearchForm";
 import { RadioGroup } from "@headlessui/react";
-import { nftsImgs } from "contains/fakeData";
+import { nftsImgs2 } from "contains/fakeData";
 import NcImage from "shared/NcImage/NcImage";
 import { CheckIcon } from "@heroicons/react/solid";
 import TabMarket from "containers/TabMarket/TabMarket";
@@ -15,35 +15,35 @@ export interface SectionHero2Props {
 const plans = [
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[0],
+    featuredImage: nftsImgs2[0],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[3],
+    featuredImage: nftsImgs2[3],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[1],
+    featuredImage: nftsImgs2[1],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[2],
+    featuredImage: nftsImgs2[2],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[3],
+    featuredImage: nftsImgs2[3],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[4],
+    featuredImage: nftsImgs2[4],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[2],
+    featuredImage: nftsImgs2[2],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[5],
+    featuredImage: nftsImgs2[5],
   },
 ];
 

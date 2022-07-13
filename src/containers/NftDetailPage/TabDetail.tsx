@@ -3,7 +3,7 @@ import { Tab } from "@headlessui/react";
 import { personNames } from "contains/fakeData";
 import Avatar from "shared/Avatar/Avatar";
 import VerifyIcon from "components/VerifyIcon";
-import object from "./data";
+import getRandomInt from "utils/getRandomInt";
 
 const TabDetail = ({data}: any) => {
   const TABS = ["Ownership History", "Provenance", "Owner"];

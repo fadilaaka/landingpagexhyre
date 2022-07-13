@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "shared/Avatar/Avatar";
 import NcImage from "shared/NcImage/NcImage";
-import { nftsImgs } from "contains/fakeData";
+import { nftsImgs2 } from "contains/fakeData";
 import LikeButton from "./LikeButton";
 import Prices from "./Prices";
 import ButtonPlayMusicRunningContainer from "containers/ButtonPlayMusicRunningContainer";
@@ -18,7 +18,7 @@ export interface CardNFTVideoProps {
 const CardNFTVideo: FC<CardNFTVideoProps> = ({
   className = "",
   isLiked,
-  featuredImage = nftsImgs[1],
+  featuredImage = nftsImgs2[1],
 }) => {
   const [DEMO_NFT_ID] = React.useState(nanoid());
 

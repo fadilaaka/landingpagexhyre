@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "@heroicons/react/solid";
 import { NavLink } from "react-router-dom";
 import Avatar from "shared/Avatar/Avatar";
 import NcImage from "shared/NcImage/NcImage";
-import { nftsImgs, _getPersonNameRd } from "contains/fakeData";
+import { nftsImgs2, _getPersonNameRd } from "contains/fakeData";
 import VerifyIcon from "components/VerifyIcon";
 
 export interface CardAuthorBox2Props {
@@ -21,7 +21,7 @@ const CardAuthorBox2: FC<CardAuthorBox2Props> = ({ className = "" }) => {
         <div>
           <NcImage
             containerClassName="flex aspect-w-7 aspect-h-5 sm:aspect-h-6 w-full h-0"
-            src={nftsImgs[Math.floor(Math.random() * nftsImgs.length)]}
+            src={nftsImgs2[(Math.floor(Math.random() * nftsImgs2.length))]}
           />
         </div>
         <div className="absolute top-3 inset-x-3 flex">

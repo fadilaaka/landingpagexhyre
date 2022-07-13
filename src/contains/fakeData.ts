@@ -9,22 +9,26 @@ import avatar8 from "images/avatars/Image-8.png";
 import avatar9 from "images/avatars/Image-9.png";
 import avatar10 from "images/avatars/Image-10.png";
 //
-import nfts1 from "images/nfts/1.png";
-import nfts2 from "images/nfts/2.png";
-import nfts3 from "images/nfts/3.png";
-import nfts4 from "images/nfts/4.png";
-import nfts5 from "images/nfts/5.png";
-import nfts6 from "images/nfts/6.png";
-import nfts7 from "images/nfts/7.png";
-import nfts8 from "images/nfts/8.png";
-import nfts9 from "images/nfts/9.png";
-import nfts10 from "images/nfts/10.png";
-import nfts11 from "images/nfts/11.png";
-import nfts12 from "images/nfts/12.png";
-import nfts13 from "images/nfts/13.png";
-import nfts14 from "images/nfts/14.png";
-import nfts15 from "images/nfts/15.png";
-import nfts16 from "images/nfts/16.png";
+import nfts1 from "images/nfts/alif/1.png";
+import nfts2 from "images/nfts/alif/2.png";
+import nfts3 from "images/nfts/alif/3.png";
+import nfts4 from "images/nfts/alif/4.png";
+import nfts5 from "images/nfts/alif/5.png";
+import nfts6 from "images/nfts/alif/6.png";
+import nfts7 from "images/nfts/alif/7.png";
+import nfts8 from "images/nfts/alif/8.png";
+import nfts9 from "images/nfts/alif/9.png";
+import nfts10 from "images/nfts/alif/10.png";
+import nfts11 from "images/nfts/newton/11.png";
+import nfts12 from "images/nfts/newton/12.png";
+import nfts13 from "images/nfts/newton/13.png";
+import nfts14 from "images/nfts/newton/14.png";
+import nfts15 from "images/nfts/newton/15.png";
+import nfts16 from "images/nfts/newton/16.png";
+import nfts17 from "images/nfts/newton/13.png";
+import nfts18 from "images/nfts/newton/14.png";
+import nfts19 from "images/nfts/newton/15.png";
+import nfts20 from "images/nfts/newton/16.png";
 import nftsLarge1 from "images/nfts/large1.png";
 import nftsLarge2 from "images/nfts/large2.png";
 import nftsLarge3 from "images/nfts/large3.png";
@@ -35,6 +39,7 @@ import nftsCat3 from "images/nfts/cat3.png";
 import nftsCat4 from "images/nfts/cat4.png";
 import nftsCat5 from "images/nfts/cat5.png";
 import nftsCat6 from "images/nfts/cat6.png";
+import getRandomInt from "utils/getRandomInt";
 
 export const nftsCatImgs = [
   nftsCat1,
@@ -45,24 +50,34 @@ export const nftsCatImgs = [
   nftsCat5,
 ];
 export const nftsLargeImgs = [nftsLarge1, nftsLarge2, nftsLarge3];
-export const nftsImgs = [
-  nfts1,
-  nfts2,
-  nfts3,
-  nfts4,
-  nfts5,
-  nfts6,
-  nfts7,
-  nfts8,
-  nfts9,
-  nfts10,
-  nfts11,
-  nfts12,
-  nfts13,
-  nfts14,
-  nfts15,
-  nfts16,
-];
+export const nftsImgs:any = {
+  alif: [
+    [nfts1, "Alif - Type 72 - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts2, "Alif - Type 38 - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts3, "Alif - Type 34 - B", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts4, "Alif - Type 36 - A", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts5, "Alif - Type 34 - C", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts6, "Alif - Type 34 - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts7, "Alif - Type 72 - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts8, "Alif - Type 30 - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts9, "Alif - Type 38 - B", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts10, "Alif - Type 45 - A", getRandomInt(99, 999), getRandomInt(17, 99)],
+  ],
+  newton: [
+    [nfts11, "Newton - Cyprus - 2 BR-B - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts12, "Newton - Cyprus - 2 BR-A - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts13, "Newton - Cyprus - 1 BR -- X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts14, "Newton - Bahama - 4 BR - C", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts15, "Newton - Bahama - 6 BR - A", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts16, "Newton - Champa - Superior Corner - C", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts17, "Newton - Champa - Superior Bridge 2 - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts18, "Newton - Champa - Superior - A", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts19, "Newton - Cyprus - ST-C - A", getRandomInt(99, 999), getRandomInt(17, 99)],
+    [nfts20, "Newton - Champa - Deluxe - X", getRandomInt(99, 999), getRandomInt(17, 99)],
+  ],
+};
+
+export const nftsImgs2 = [nfts1, nfts2, nfts3, nfts4, nfts5];
 
 export const nftsAbstracts = [
   "https://images.pexels.com/photos/3631430/pexels-photo-3631430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -193,24 +208,25 @@ const aTitles = [
   "non sodales neque sodales ut etiam sit amet nisl purus",
 ];
 
-export const nftName = [
-  'Alif - Type 72 - X',
-  'Alif - Type 38 - X',
-  'Alif - Type 34 - B',
-  'Alif - Type 36 - A',
-  'Alif - Type 34 - C',
-  'Alif - Type 34 - X',
-  'Newton - Cyprus - 2 BR-B - X',
-  'Newton - Cyprus - 2 BR-A - X',
-  'Newton - Cyprus - 1 BR -- X',
-  'Newton - Bahama - 4 BR - C',
-  'Newton - Bahama - 6 BR - A',
-  'Newton - Champa - Superior Corner - C',
-  'Newton - Champa - Superior Bridge 2 - X',
-  'Newton - Champa - Superior - A',
-  'Newton - Cyprus - ST-C - A',
-  'Newton - Champa - Deluxe - X',
-]
+// export const nftName = [
+//   'Alif - Type 72 - X',
+//   'Alif - Type 38 - X',
+//   'Alif - Type 34 - B',
+//   'Alif - Type 36 - A',
+//   'Alif - Type 34 - C',
+//   'Alif - Type 34 - X',
+//   'Newton - Cyprus - 2 BR-B - X',
+//   'Newton - Cyprus - 2 BR-A - X',
+//   'Newton - Cyprus - 1 BR -- X',
+//   'Newton - Bahama - 4 BR - C',
+//   'Newton - Bahama - 6 BR - A',
+//   'Newton - Champa - Superior Corner - C',
+//   'Newton - Champa - Superior Bridge 2 - X',
+//   'Newton - Champa - Superior - A',
+//   'Newton - Cyprus - ST-C - A',
+//   'Newton - Champa - Deluxe - X',
+// ]
+export const nftName = [];
 
 function _getTitleRd() {
   return aTitles[Math.floor(Math.random() * aTitles.length)];

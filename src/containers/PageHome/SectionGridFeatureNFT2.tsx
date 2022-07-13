@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import HeaderFilterSection from "components/HeaderFilterSection";
 import CardNFT2 from "components/CardNFT2";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
+import CardNFT from "components/CardNFT";
 
 //
 export interface SectionGridFeatureNFT2Props {}
@@ -12,7 +13,7 @@ const SectionGridFeatureNFT2: FC<SectionGridFeatureNFT2Props> = () => {
       <HeaderFilterSection />
       <div className={`grid gap-6 lg:gap-8 sm:grid-cols-2 xl:grid-cols-3`}>
         {Array.from("111111111").map((_, index) => (
-          <CardNFT2 key={index} />
+          <CardNFT key={index} />
         ))}
       </div>
       <div className="flex mt-16 justify-center items-center">

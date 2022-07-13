@@ -1,5 +1,11 @@
-import React, { FC, useState, Fragment, useRef } from "react";
-import Avatar from "shared/Avatar/Avatar";
+import React, {
+  FC,
+  useState,
+  Fragment,
+  useRef,
+  ReactNode,
+  useEffect,
+} from "react";import Avatar from "shared/Avatar/Avatar";
 import Badge from "shared/Badge/Badge";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
@@ -26,6 +32,8 @@ import NavWallet from "shared/Navigation/NavWallet";
 import { useParams } from "react-router-dom";
 import FormItem from "components/FormItem";
 import Input from "shared/Input/Input";
+import getRandomInt from "utils/getRandomInt";
+import { Tooltip } from "./Tooltip";
 // import { ExclamationIcon } from "@heroicons/react/outline";
 
 export interface NftDetailPageProps {
@@ -34,13 +42,14 @@ export interface NftDetailPageProps {
 }
 
 type Param = {
+  type: any;
   id: any;
 };
 
 type Data = {
   name: string,
   price: any,
-  buyed: number,
+  buyed: any,
   time: string
 }
 
@@ -49,23 +58,25 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
   isPreviewMode,
 }) => {
   const [open, setOpen] = useState(false);
-  const { id }: Param = useParams();
+  const { type, id }: Param = useParams();
 
-  const name = "Johny";
-  const maxREX = 2680;
+  const randomNumber = (length: any) => {
+    return Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
+  }
+
+  const maxREX = type === "alif"
+  ? nftsImgs["alif"][id][2]
+  : nftsImgs["newton"][id][2];
 
   const [inputREX, setInputREX] = useState(0);
   const [voterList, setVoterList] = useState<Data[]>([]);
 
-  const percentage = (inputREX/maxREX)*100;
-
-  const minREX = maxREX - inputREX;
+  const percentage = ((inputREX/maxREX)*100).toFixed(2);
 
   const handleOnChange = (e: any) => {
+    e.preventDefault();
     if(Number(e.target.value) > maxREX) {
       setInputREX(maxREX)
-    } else if(Number(e.target.value) > minREX && Number(e.target.value) < maxREX) {
-      setInputREX(minREX)
     } else {
       setInputREX(e.target.value)
     }
@@ -77,6 +88,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
 
   console.log(voterList);
   console.log(voterList.length)
+
   let totalREX = 0;
   for (const rex of voterList) {
     totalREX = totalREX + parseInt(rex.price);
@@ -86,7 +98,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
   if(totalREX > maxREX) {
     totalREX = maxREX
   }
-  const totalPercentage = (totalREX/maxREX)*100;
+  let totalPercentage:any = ((totalREX/maxREX)*100).toFixed(2);
 
   const now = new Date();
   console.log(now.toLocaleString());
@@ -100,6 +112,8 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
     setOpen(false);
     console.log(voterList);
   }
+
+  const [isFull, setIsFull] = useState(0)
 
   const Modal = () => {
     const cancelButtonRef = useRef(null);
@@ -208,7 +222,9 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             <LikeSaveBtns />
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-            {nftName[id]}
+            {type === "alif"
+            ? nftsImgs["alif"][id][1]
+            : nftsImgs["newton"][id][1]}          
           </h2>
 
           {/* ---------- 4 ----------  */}
@@ -264,36 +280,47 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             <div className="thrasehold flex w-full absolute mb-5">
               <span className="text-green-500 mr-3">{totalREX} REX</span>
               <span className="text-sm  text-slate-400">
-                collected from {maxREX} REX
+              {`collected from ${
+                  type === "alif"
+                    ? nftsImgs["alif"][id][2]
+                    : nftsImgs["newton"][id][2]
+              } REX`}
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <Tooltip message={totalPercentage.toString()}>
               <div
                 className="bg-green-600 h-2.5 rounded-full"
                 style={{ width: `${totalPercentage}%` }}
               ></div>
+            </Tooltip>
             </div>
             <span
               className="text-sm text-neutral-500 dark:text-neutral-400 sm:mt-0 sm:ml-10 justify-center"
               style={{ width: "8em" }}
             >
-              64 days left
+              {`${
+                type == "alif"
+                  ? nftsImgs["alif"][id][3]
+                  : nftsImgs["newton"][id][3]
+              } days left`}
             </span>
             <span className="text-sm text-slate-400 dark:text-neutral-400 top-8 -left-10  sm:mt-0 sm:ml-10 absolute">
               {voterList.length} voters
             </span>
           </div>
           <br />
-          <ButtonPrimary
-            className="absolute left-0 top-12"
-            data-modal-toggle="popup-modal"
-            type="button"
-            onClick={() => setOpen(true)}
-          >
-            Buy Ownership
-          </ButtonPrimary>
-          <br />
-          <br />
+              <ButtonPrimary
+              className="absolute left-0 top-12"
+              data-modal-toggle="popup-modal"
+              type="button"
+              disabled={totalPercentage.toString() === "100.00" ? true : false}
+              onClick={() => setOpen(true)}
+              >
+                {totalPercentage.toString() === "100.00" ? "Voting Closed" : "Buy Ownership"}
+              </ButtonPrimary>
+              <br />
+              <br />
           {/* {showModal ? (
             <div
               id="popup-modal"
@@ -380,8 +407,12 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             {/* HEADING */}
             <div className="relative">
               <NcImage
-                src={nftsImgs[id]}
-                containerClassName="aspect-w-11 aspect-h-12 rounded-3xl overflow-hidden"
+              src={
+                type === "alif"
+                  ? nftsImgs["alif"][id][0]
+                  : nftsImgs["newton"][id][0]
+              }                
+              containerClassName="aspect-w-11 aspect-h-12 rounded-3xl overflow-hidden"
               />
               {/* META TYPE */}
               <ItemTypeVideoIcon className="absolute left-3 top-3  w-8 h-8 md:w-10 md:h-10" />

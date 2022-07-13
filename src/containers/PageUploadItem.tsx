@@ -6,7 +6,7 @@ import Textarea from "shared/Textarea/Textarea";
 import { Helmet } from "react-helmet";
 import FormItem from "components/FormItem";
 import { RadioGroup } from "@headlessui/react";
-import { nftsImgs } from "contains/fakeData";
+import { nftsImgs2 } from "contains/fakeData";
 import MySwitch from "components/MySwitch";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import NcImage from "shared/NcImage/NcImage";
@@ -18,27 +18,27 @@ export interface PageUploadItemProps {
 const plans = [
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[0],
+    featuredImage: nftsImgs2[0],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[1],
+    featuredImage: nftsImgs2[1],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[2],
+    featuredImage: nftsImgs2[2],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[3],
+    featuredImage: nftsImgs2[3],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[4],
+    featuredImage: nftsImgs2[4],
   },
   {
     name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[5],
+    featuredImage: nftsImgs2[5],
   },
 ];
 

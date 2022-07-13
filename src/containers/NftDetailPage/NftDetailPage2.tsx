@@ -8,7 +8,12 @@ import LikeSaveBtns from "./LikeSaveBtns";
 import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import SectionSliderCategories from "components/SectionSliderCategories/SectionSliderCategories";
 import VerifyIcon from "components/VerifyIcon";
-import { nftName, nftsImgs, nftsLargeImgs, personNames } from "contains/fakeData";
+import {
+  nftName,
+  nftsImgs,
+  nftsLargeImgs,
+  personNames,
+} from "contains/fakeData";
 import TimeCountDown from "./TimeCountDown";
 import TabDetail from "./TabDetail";
 import collectionPng from "images/nfts/collection.png";
@@ -20,7 +25,7 @@ import { Transition, Dialog } from "@headlessui/react";
 import NavWallet from "shared/Navigation/NavWallet";
 import { useParams } from "react-router-dom";
 import TabDetail2 from "./TabDetail2";
-
+import getRandomInt from "utils/getRandomInt";
 
 export interface NftDetailPageProps {
   className?: string;
@@ -28,8 +33,9 @@ export interface NftDetailPageProps {
 }
 
 type Param = {
-  id: any
-}
+  type: any;
+  id: any;
+};
 
 const NftDetailPage2: FC<NftDetailPageProps> = ({
   className = "",
@@ -40,8 +46,7 @@ const NftDetailPage2: FC<NftDetailPageProps> = ({
   const handleOpenMenu = () => setIsVisable(true);
   const handleCloseMenu = () => setIsVisable(false);
 
-const {id}: Param = useParams()
-
+  const { type, id }: Param = useParams();
 
   const renderContent = () => {
     return (
@@ -94,7 +99,9 @@ const {id}: Param = useParams()
             <LikeSaveBtns />
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-            {nftName[id]}
+          {type === "alif"
+              ? nftsImgs["alif"][id][1]
+              : nftsImgs["newton"][id][1]}
           </h2>
 
           {/* ---------- 4 ----------  */}
@@ -138,21 +145,24 @@ const {id}: Param = useParams()
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
             <div className="flex-1 flex flex-col sm:flex-row items-baseline p-6 border-2 border-green-500 rounded-xl relative">
               <span className="absolute bottom-full translate-y-1 py-1 px-1.5 bg-white dark:bg-neutral-900 text-sm text-neutral-500 dark:text-neutral-400">
-                Current Price
+                Market Cap
               </span>
               <span className="text-3xl xl:text-4xl font-semibold text-green-500">
-                1.000 ETH
+              {`${
+                  type == "alif"
+                    ? nftsImgs["alif"][id][2]
+                    : nftsImgs["newton"][id][2]
+                } REX`}
               </span>
               <span className="text-lg text-neutral-400 sm:ml-5">
-                ( ≈ $3,221.22)
+                {`≈ ($${getRandomInt(777, 9999)})`}
               </span>
             </div>
 
             <span className="text-sm text-neutral-500 dark:text-neutral-400 ml-5 mt-2 sm:mt-0 sm:ml-10">
-              [96 in stock]
+              {`[${getRandomInt(33, 99)} in stocks]`}
             </span>
           </div>
-
         </div>
 
         {/* ---------- 9 ----------  */}
@@ -177,7 +187,11 @@ const {id}: Param = useParams()
             {/* HEADING */}
             <div className="relative">
               <NcImage
-                src={nftsImgs[id]}
+                src={
+                  type === "alif"
+                    ? nftsImgs["alif"][id][0]
+                    : nftsImgs["newton"][id][0]
+                }
                 containerClassName="aspect-w-11 aspect-h-12 rounded-3xl overflow-hidden"
               />
               {/* META TYPE */}
