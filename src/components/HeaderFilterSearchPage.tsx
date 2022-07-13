@@ -14,16 +14,16 @@ const HeaderFilterSearchPage: FC<HeaderFilterSearchPageProps> = ({
   className = "mb-12",
 }) => {
   const [isOpen, setIsOpen] = React.useState(true);
-  const [tabActive, setTabActive] = React.useState("All NFTs");
+  const [tabActive, setTabActive] = React.useState("Alif Homes");
 
   return (
     <div className={`flex flex-col relative ${className}`}>
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between space-y-6 lg:space-y-0 lg:space-x-2 ">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-end space-y-6 lg:space-y-0 lg:space-x-2 ">
         <Nav
           className="sm:space-x-2"
           containerClassName="relative flex w-full overflow-x-auto text-sm md:text-base hiddenScrollbar"
         >
-          {["All NFTs", "Arts", "Musics", "Sports", "Photography"].map(
+          {["Alif Homes", "Newton"].map(
             (item, index) => (
               <NavItem
                 key={index}

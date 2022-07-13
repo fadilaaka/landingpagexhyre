@@ -1,4 +1,4 @@
-import React, { FC, useState, Fragment } from "react";
+import React, { FC, useState, Fragment, useRef } from "react";
 import Avatar from "shared/Avatar/Avatar";
 import Badge from "shared/Badge/Badge";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
@@ -8,7 +8,12 @@ import LikeSaveBtns from "./LikeSaveBtns";
 import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import SectionSliderCategories from "components/SectionSliderCategories/SectionSliderCategories";
 import VerifyIcon from "components/VerifyIcon";
-import { nftsLargeImgs, personNames } from "contains/fakeData";
+import {
+  nftName,
+  nftsImgs,
+  nftsLargeImgs,
+  personNames,
+} from "contains/fakeData";
 import TimeCountDown from "./TimeCountDown";
 import TabDetail from "./TabDetail";
 import collectionPng from "images/nfts/collection.png";
@@ -18,63 +23,181 @@ import AccordionInfo from "./AccordionInfo";
 import SectionBecomeAnAuthor from "components/SectionBecomeAnAuthor/SectionBecomeAnAuthor";
 import { Transition, Dialog } from "@headlessui/react";
 import NavWallet from "shared/Navigation/NavWallet";
-
+import { useParams } from "react-router-dom";
+import FormItem from "components/FormItem";
+import Input from "shared/Input/Input";
+// import { ExclamationIcon } from "@heroicons/react/outline";
 
 export interface NftDetailPageProps {
   className?: string;
   isPreviewMode?: boolean;
 }
 
+type Param = {
+  id: any;
+};
+
+type Data = {
+  name: string,
+  price: any,
+  buyed: number,
+  time: string
+}
+
 const NftDetailPage: FC<NftDetailPageProps> = ({
   className = "",
   isPreviewMode,
 }) => {
-  const [isVisable, setIsVisable] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { id }: Param = useParams();
 
-  const handleOpenMenu = () => setIsVisable(true);
-  const handleCloseMenu = () => setIsVisable(false);
+  const name = "Johny";
+  const maxREX = 2680;
 
-  const renderContent = () => {
+  const [inputREX, setInputREX] = useState(0);
+  const [voterList, setVoterList] = useState<Data[]>([]);
+
+  const percentage = (inputREX/maxREX)*100;
+
+  const minREX = maxREX - inputREX;
+
+  const handleOnChange = (e: any) => {
+    if(Number(e.target.value) > maxREX) {
+      setInputREX(maxREX)
+    } else if(Number(e.target.value) > minREX && Number(e.target.value) < maxREX) {
+      setInputREX(minREX)
+    } else {
+      setInputREX(e.target.value)
+    }
+  }
+  const inputChangedHandler = (e: any) => {
+    const updatedKeyword = e.target.value;
+    // May be call for search result
+  }
+
+  console.log(voterList);
+  console.log(voterList.length)
+  let totalREX = 0;
+  for (const rex of voterList) {
+    totalREX = totalREX + parseInt(rex.price);
+  }
+  console.log(totalREX)
+
+  if(totalREX > maxREX) {
+    totalREX = maxREX
+  }
+  const totalPercentage = (totalREX/maxREX)*100;
+
+  const now = new Date();
+  console.log(now.toLocaleString());
+  const handleOnClick = (e: any) => {
+    setVoterList([...voterList, {
+      name: "0x45cv6389sw...", 
+      price: inputREX, 
+      buyed: percentage,
+      time: now.toLocaleString(),
+    }])
+    setOpen(false);
+    console.log(voterList);
+  }
+
+  const Modal = () => {
+    const cancelButtonRef = useRef(null);
+
     return (
-      <Transition appear show={isVisable} as={Fragment}>
+      <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
-          onClose={handleCloseMenu}
+          className="relative z-10"
+          initialFocus={cancelButtonRef}
+          onClose={setOpen}
         >
-          <div className="fixed right-0 top-0 bottom-0 w-full md:w-auto z-max outline-none focus:outline-none">
-            <React.Fragment>
-              <Transition.Child
-                as={Fragment}
-                enter="transition duration-100 transform"
-                enterFrom="opacity-0 translate-x-14"
-                enterTo="opacity-100 translate-x-0"
-                leave="transition duration-150 transform"
-                leaveFrom="opacity-100 translate-x-0"
-                leaveTo="opacity-0 translate-x-14"
-              >
-                <div className="z-10 relative">
-                  <NavWallet onClickClose={handleCloseMenu} />
-                </div>
-              </Transition.Child>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
 
+          <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
               <Transition.Child
                 as={Fragment}
-                enter=" duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave=" duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Overlay className="fixed inset-0 bg-neutral-900 bg-opacity-50" />
+                <Dialog.Panel className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                  <div className="bg-white px-6 pt-2 sm:p-6 sm:pb-4">
+                    <div className="sm:flex sm:items-start">
+                      {/* <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <ExclamationIcon
+                          className="h-6 w-6 text-red-600"
+                          aria-hidden="true"
+                        />
+                      </div> */}
+                      <div className="mt-3 sm:mt-0 sm:text-left">
+                        <Dialog.Title
+                          as="h3"
+                          className="text-lg leading-6 font-semibold text-gray-900 mb-5"
+                        >
+                          Buy Ownership
+                        </Dialog.Title>
+                        <div className="mt-2">
+                          <div className="flex w-full items-center">
+                            <FormItem label="Buy Nominal" >
+                              <Input placeholder="0" type="number" onChange={handleOnChange} value={inputREX}/>
+                            </FormItem>
+                            <span className="mt-7 mx-2 font-semibold text-slate-600">REX</span>
+                            <FormItem label="Valuation" >
+                              <Input placeholder="0" type="number" onChange={(e: any) => inputChangedHandler(e)} value={percentage}/>
+                            </FormItem>
+                            <span className="mt-7 mx-2 font-semibold text-slate-600">%</span>
+                          </div>
+                          <div className="justify-center flex">
+                            <button className="ttnc-ButtonPrimary disabled:bg-opacity-70 bg-primary-6000 hover:bg-primary-700 text-neutral-50 py-3 rounded-full text-sm mt-6 w-full justify-self-auto font-semibold"
+                            onClick={handleOnClick}>
+                              Buy
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    {/* <button
+                      type="button"
+                      className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                      onClick={() => setOpen(false)}
+                    >
+                      Deactivate
+                    </button> */}
+                    <button
+                      type="button"
+                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-semibold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                      onClick={() => setOpen(false)}
+                      ref={cancelButtonRef}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </Dialog.Panel>
               </Transition.Child>
-            </React.Fragment>
+            </div>
           </div>
         </Dialog>
-      </Transition>
+      </Transition.Root>
     );
   };
+
   const renderSection1 = () => {
     return (
       <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
@@ -85,7 +208,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             <LikeSaveBtns />
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-            BearX #3636
+            {nftName[id]}
           </h2>
 
           {/* ---------- 4 ----------  */}
@@ -126,10 +249,10 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
         {/* ---------- 7 ----------  */}
         {/* PRICE */}
         <div className="pb-9 pt-14">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
-            <div className="flex-1 flex flex-col sm:flex-row items-baseline p-6 border-2 border-green-500 rounded-xl relative">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between relative">
+            {/* <div className="flex-1 flex flex-col sm:flex-row items-baseline p-6 border-2 border-green-500 rounded-xl relative">
               <span className="absolute bottom-full translate-y-1 py-1 px-1.5 bg-white dark:bg-neutral-900 text-sm text-neutral-500 dark:text-neutral-400">
-                Current Bid
+                Current Price
               </span>
               <span className="text-3xl xl:text-4xl font-semibold text-green-500">
                 1.000 ETH
@@ -137,88 +260,107 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
               <span className="text-lg text-neutral-400 sm:ml-5">
                 ( ≈ $3,221.22)
               </span>
+            </div> */}
+            <div className="thrasehold flex w-full absolute mb-5">
+              <span className="text-green-500 mr-3">{totalREX} REX</span>
+              <span className="text-sm  text-slate-400">
+                collected from {maxREX} REX
+              </span>
             </div>
-
-            <span className="text-sm text-neutral-500 dark:text-neutral-400 ml-5 mt-2 sm:mt-0 sm:ml-10">
-              [96 in stock]
+            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div
+                className="bg-green-600 h-2.5 rounded-full"
+                style={{ width: `${totalPercentage}%` }}
+              ></div>
+            </div>
+            <span
+              className="text-sm text-neutral-500 dark:text-neutral-400 sm:mt-0 sm:ml-10 justify-center"
+              style={{ width: "8em" }}
+            >
+              64 days left
+            </span>
+            <span className="text-sm text-slate-400 dark:text-neutral-400 top-8 -left-10  sm:mt-0 sm:ml-10 absolute">
+              {voterList.length} voters
             </span>
           </div>
-
-          <div className="mt-8 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-            <ButtonPrimary onClick={handleOpenMenu} className="flex-1">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M18.04 13.55C17.62 13.96 17.38 14.55 17.44 15.18C17.53 16.26 18.52 17.05 19.6 17.05H21.5V18.24C21.5 20.31 19.81 22 17.74 22H6.26C4.19 22 2.5 20.31 2.5 18.24V11.51C2.5 9.44001 4.19 7.75 6.26 7.75H17.74C19.81 7.75 21.5 9.44001 21.5 11.51V12.95H19.48C18.92 12.95 18.41 13.17 18.04 13.55Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M2.5 12.4101V7.8401C2.5 6.6501 3.23 5.59006 4.34 5.17006L12.28 2.17006C13.52 1.70006 14.85 2.62009 14.85 3.95009V7.75008"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M22.5588 13.9702V16.0302C22.5588 16.5802 22.1188 17.0302 21.5588 17.0502H19.5988C18.5188 17.0502 17.5288 16.2602 17.4388 15.1802C17.3788 14.5502 17.6188 13.9602 18.0388 13.5502C18.4088 13.1702 18.9188 12.9502 19.4788 12.9502H21.5588C22.1188 12.9702 22.5588 13.4202 22.5588 13.9702Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M7 12H14"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              <span className="ml-2.5">Place a bid</span>
-            </ButtonPrimary>
-            <ButtonSecondary onClick={handleOpenMenu} className="flex-1">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M8.57007 15.27L15.11 8.72998"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M8.98001 10.3699C9.65932 10.3699 10.21 9.81923 10.21 9.13992C10.21 8.46061 9.65932 7.90991 8.98001 7.90991C8.3007 7.90991 7.75 8.46061 7.75 9.13992C7.75 9.81923 8.3007 10.3699 8.98001 10.3699Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M15.52 16.0899C16.1993 16.0899 16.75 15.5392 16.75 14.8599C16.75 14.1806 16.1993 13.6299 15.52 13.6299C14.8407 13.6299 14.29 14.1806 14.29 14.8599C14.29 15.5392 14.8407 16.0899 15.52 16.0899Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              <span className="ml-2.5"> Make offer</span>
-            </ButtonSecondary>
-          </div>
+          <br />
+          <ButtonPrimary
+            className="absolute left-0 top-12"
+            data-modal-toggle="popup-modal"
+            type="button"
+            onClick={() => setOpen(true)}
+          >
+            Buy Ownership
+          </ButtonPrimary>
+          <br />
+          <br />
+          {/* {showModal ? (
+            <div
+              id="popup-modal"
+              tabIndex={-1}
+              className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full"
+            >
+              <div className="relative p-4 w-full max-w-md h-full md:h-auto">
+                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <button
+                    type="button"
+                    className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                    data-modal-toggle="popup-modal"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div className="p-6 text-center">
+                    <svg
+                      className="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                      Are you sure you want to delete this product?
+                    </h3>
+                    <button
+                      data-modal-toggle="popup-modal"
+                      type="button"
+                      className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+                    >
+                      Yes, I'm sure
+                    </button>
+                    <button
+                      data-modal-toggle="popup-modal"
+                      type="button"
+                      className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    >
+                      No, cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : null} */}
         </div>
-
         {/* ---------- 9 ----------  */}
         <div className="pt-9">
-          <TabDetail />
+          <TabDetail data={voterList}/>
         </div>
       </div>
     );
@@ -229,8 +371,8 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
       className={`nc-NftDetailPage  ${className}`}
       data-nc-id="NftDetailPage"
     >
-      {renderContent()}
       {/* MAIn */}
+      {Modal()}
       <main className="container mt-11 flex ">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
           {/* CONTENT */}
@@ -238,7 +380,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             {/* HEADING */}
             <div className="relative">
               <NcImage
-                src={nftsLargeImgs[0]}
+                src={nftsImgs[id]}
                 containerClassName="aspect-w-11 aspect-h-12 rounded-3xl overflow-hidden"
               />
               {/* META TYPE */}

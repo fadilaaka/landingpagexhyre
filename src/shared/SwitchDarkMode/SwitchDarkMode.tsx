@@ -38,8 +38,8 @@ const SwitchDarkMode: React.FC<SwitchDarkModeProps> = ({ className = "" }) => {
     if (localStorage.theme === "light") {
       toDark();
     } else {
-      toDark();
-      // toLight();
+      // toDark();
+      toLight();
     }
   }
 

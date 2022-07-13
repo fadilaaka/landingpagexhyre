@@ -34,7 +34,7 @@ const NavVoting: FC<NavVotingProps> = ({ onClickClose, itemName }) => {
         <div className="my-5 sm:lg:my-16 lg:my-24 max-w-3xl mx-auto space-y-8 sm:space-y-10">
           {/* HEADING */}
           <div className="max-w-2xl">
-            <h2 className="text-2xl sm:text-4xl font-semibold text-black">
+            <h2 className="text-2xl sm:text-4xl font-semibold text-white">
               NFT Voting
             </h2>
             {/* <span className="block mt-3 text-neutral-500 dark:text-neutral-400">

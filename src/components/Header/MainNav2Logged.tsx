@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Logo from "shared/Logo/Logo";
 import MenuBar from "shared/MenuBar/MenuBar";
 import SwitchDarkMode from "shared/SwitchDarkMode/SwitchDarkMode";
@@ -14,27 +14,28 @@ import ButtonDropDownShare from "components/ButtonDropDownShare";
 import NcDropDown from "shared/NcDropDown/NcDropDown";
 import NcDropDownWallet from "shared/NcDropDownWallet/NcDropDownWallet";
 import {FaWallet} from 'react-icons/fa'
-export interface MainNav2LoggedProps {}
+import { NAVIGATION_DEMO_3 } from "data/navigation";
 
+export interface MainNav2LoggedProps {}
 
 const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
   const ethers = require("ethers");
   const network = "rinkeby"; // use rinkeby testnet
   const provider = ethers.getDefaultProvider(network);
   const address = "0x58B7514792A5fB080E3C7340230672fB23641CC3";
-  
-  
-  let balanceInEth: any;
+  const [balance, setbalance] = useState('')
+
   provider.getBalance(address).then((balance: any) => {
     // convert a currency unit from wei to ether
-    balanceInEth = ethers.utils.formatEther(balance);
+    let balanceInEth = ethers.utils.formatEther(balance);
     console.log(`balance: ${balanceInEth} ETH`);
   
     console.log(balanceInEth);
+    setbalance(balanceInEth);
   });
   
   return (
-    <div className={`nc-MainNav2Logged relative z-10 ${"onTop "}`}>
+    <div className={`nc-MainNav2Logged relative z-10 ${"onTop"}`}>
       <div className="container py-1 relative flex justify-between items-center space-x-4 xl:space-x-8">
         <div className="flex justify-start flex-grow items-center space-x-3 sm:space-x-8 lg:space-x-10">
           <Logo imgDropShadow={true}/>
@@ -73,19 +74,23 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             </form>
           </div> */}
         </div>
+        <a type="button" href="http://localhost:3001/swap" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Swap</a>
+        <a type="button" href="http://localhost:3001/proposals" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Voting</a>
+        <SwitchDarkMode />
         <div className="flex-shrink-0 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1">
           {/* <ButtonPrimary> */}
           <NcDropDownWallet
-      className="ttnc-ButtonSecondary border bg-white border-neutral-200 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm sm:text-base font-medium px-4 py-3 sm:px-6 rounded-full"
-      renderTrigger={() => (
-        <div className="flex flex-row justify-center items-center">
-          <FaWallet/>
-          <span className="ml-2">MyWallet</span>
-        </div>
-      )}
-      panelMenusClass="origin-top-right !-right-5 !w-40 sm:!w-52"
-      onClick={() => {}}
-      />
+          className="ttnc-ButtonSecondary border bg-white border-neutral-200 dark:border-white-600 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm sm:text-base font-medium px-4 py-3 sm:px-6 rounded-full"
+          renderTrigger={() => (
+            <div className="flex flex-row justify-center items-center">
+              <FaWallet/>
+              <span className="ml-2">MyWallet</span>
+            </div>
+          )}
+          panelMenusClass="origin-top-right !-right-5 !w-40 sm:!w-52"
+          onClick={() => null}
+          data={{balance, address}}
+          />
           {/* </ButtonPrimary> */}
         {/* <h3 className="font-semibold">Balance : <span className="text-teal-600">{`${balanceInEth} ETH`}</span></h3> */}
 

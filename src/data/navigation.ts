@@ -90,6 +90,18 @@ const otherPageChildMenus: NavItemType[] = [
     ],
   },
 ];
+const otherPageChildExplore: NavItemType[] = [
+  {
+    id: ncNanoId(),
+    href: "/primary-market",
+    name: "Primary Market",
+  },
+  {
+    id: ncNanoId(),
+    href: "/secondary-market",
+    name: "Secondary Market",
+  },
+];
 
 export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
@@ -103,5 +115,15 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     id: ncNanoId(),
     href: "/#",
     name: "Help center",
+  },
+];
+
+export const NAVIGATION_DEMO_3: NavItemType[] = [
+  {
+    id: ncNanoId(),
+    href: "#",
+    name: "Discover",
+    type: "dropdown",
+    children: otherPageChildExplore,
   },
 ];

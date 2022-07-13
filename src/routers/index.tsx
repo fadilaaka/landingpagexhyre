@@ -25,18 +25,22 @@ import LandingPage from "containers/LandingPage/LandingPage";
 import PrimaryMarket from "containers/PrimaryMarket";
 import SecondaryMarket from "containers/SecondaryMarket";
 import PageVoting from "containers/PageVoting";
+import NftDetailPage2 from "containers/NftDetailPage/NftDetailPage2";
 
 export const pages: Page[] = [
   { path: "/", exact: true, component: LandingPage },
   { path: "/primary-market", exact: true, component: PrimaryMarket },
   { path: "/secondary-market", exact: true, component: SecondaryMarket },
+  { path: "/primary-market/:id", exact: true, component: NftDetailPage },
+  { path: "/secondary-market/:id", exact: true, component: NftDetailPage2 },
   { path: "/nft-voting", exact: true, component: PageVoting },
   // { path: "/", exact: true, component: PageHome2 },
   { path: "/#", exact: true, component: PageHome2 },
   { path: "/home2", exact: true, component: PageHome },
   //
   { path: "/home-header-2", exact: true, component: PageHome },
-  { path: "/nft-detailt", component: NftDetailPage },
+  // { path: "/nft-detailt/:id", exact: true, component: NftDetailPage },
+  // { path: "/nft-detailt", component: NftDetailPage },
   { path: "/page-collection", component: PageCollection },
   { path: "/page-search", component: PageSearch },
   { path: "/page-author", component: AuthorPage },

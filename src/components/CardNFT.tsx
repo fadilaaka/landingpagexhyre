@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "shared/Avatar/Avatar";
 import NcImage from "shared/NcImage/NcImage";
-import { nftsImgs } from "contains/fakeData";
+import { nftsImgs, nftName } from "contains/fakeData";
 import ItemTypeImageIcon from "./ItemTypeImageIcon";
 import LikeButton from "./LikeButton";
 import Prices from "./Prices";
@@ -38,6 +38,10 @@ const CardNFT: FC<CardNFTProps> = ({ className = "", isLiked }) => {
     );
   };
 
+  const randInt = (Math.floor(Math.random() * nftsImgs.length))
+  const nftItemImg = nftsImgs[randInt];
+  const nftItemName = nftName[randInt];
+
   return (
     <div
       className={`nc-CardNFT relative flex flex-col group !border-0 [ nc-box-has-hover nc-dark-box-bg-has-hover ] ${className}`}
@@ -47,7 +51,7 @@ const CardNFT: FC<CardNFTProps> = ({ className = "", isLiked }) => {
         <div>
           <NcImage
             containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0 rounded-3xl overflow-hidden z-0"
-            src={nftsImgs[Math.floor(Math.random() * nftsImgs.length)]}
+            src={nftItemImg}
             className="object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-300 ease-in-out will-change-transform"
           />
         </div>
@@ -70,9 +74,7 @@ const CardNFT: FC<CardNFTProps> = ({ className = "", isLiked }) => {
             {Math.floor(Math.random() * 90) + 10} in stock
           </span>
         </div>
-        <h2 className={`text-lg font-medium`}>
-          CloneF #{Math.floor(Math.random() * 1000) + 1000}
-        </h2>
+        <h2 className={`text-lg font-medium`}>{nftItemName}</h2>
 
         <div className="w-2d4 w-full border-b border-neutral-100 dark:border-neutral-700"></div>
 
@@ -87,7 +89,10 @@ const CardNFT: FC<CardNFTProps> = ({ className = "", isLiked }) => {
         </div>
       </div>
 
-      <Link to={"/nft-detailt"} className="absolute inset-0"></Link>
+      <Link
+        to={`/secondary-market/${nftName.indexOf(nftItemName)}`}
+        className="absolute inset-0"
+      ></Link>
     </div>
   );
 };

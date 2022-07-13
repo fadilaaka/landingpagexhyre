@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Tab, Transition } from "@headlessui/react";
-import { nftsImgs, personNames } from "contains/fakeData";
+import { nftName, nftsImgs, personNames } from "contains/fakeData";
 import Avatar from "shared/Avatar/Avatar";
 import VerifyIcon from "components/VerifyIcon";
 import NcImage from "shared/NcImage/NcImage";
@@ -11,7 +11,7 @@ import NavVoting from "shared/Navigation/NavVoting";
 
 // const plans = [
 //   {
-//     name: "Crypto Legend - Professor",
+// name: nftName[],
 //     featuredImage: nftsImgs[0],
 //   },
 //   {
@@ -34,37 +34,37 @@ import NavVoting from "shared/Navigation/NavVoting";
 
 const plans2 = [
   {
-    name: "CloneY #5234",
+    name: nftName[12],
     creator: personNames[0],
     featuredImage: nftsImgs[0],
   },
   {
-    name: "DoctorX #4123",
+    name: nftName[2],
     creator: personNames[1],
     featuredImage: nftsImgs[4],
   },
   {
-    name: "HIU - C24",
+    name: nftName[5],
     creator: personNames[2],
     featuredImage: nftsImgs[3],
   },
   {
-    name: "T0x1c #1423",
+    name: nftName[6],
     creator: personNames[3],
     featuredImage: nftsImgs[1],
   },
   {
-    name: "OUI - 1423",
+    name: nftName[0],
     creator: personNames[4],
     featuredImage: nftsImgs[2],
   },
   {
-    name: "BAb0n #1423",
+    name: nftName[5],
     creator: personNames[8],
     featuredImage: nftsImgs[1],
   },
   {
-    name: "OUI - 1423",
+    name: nftName[11],
     creator: personNames[4],
     featuredImage: nftsImgs[5],
   },
@@ -100,7 +100,10 @@ const TabMarket = () => {
                 leaveTo="opacity-0 translate-x-14"
               >
                 <div className="z-10 relative">
-                  <NavVoting onClickClose={handleCloseMenu} itemName={nftName} />
+                  <NavVoting
+                    onClickClose={handleCloseMenu}
+                    itemName={nftName}
+                  />
                 </div>
               </Transition.Child>
 

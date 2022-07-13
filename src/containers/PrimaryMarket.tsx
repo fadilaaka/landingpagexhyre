@@ -10,6 +10,8 @@ import Input from "shared/Input/Input";
 import ButtonCircle from "shared/Button/ButtonCircle";
 import CardNFT from "components/CardNFT";
 import Heading from "components/Heading/Heading";
+import CardNFT2 from "components/CardNFT2";
+import CardNFT1 from "components/CardNFT1";
 
 export interface PrimaryMarketProps {
   className?: string;
@@ -96,7 +98,7 @@ const PrimaryMarket: FC<PrimaryMarketProps> = ({ className = "" }) => {
           {/* LOOP ITEMS */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10 mt-8 lg:mt-10">
             {Array.from("11111111").map((_, index) => (
-              <CardNFT key={index} />
+              <CardNFT1 key={index} />
             ))}
           </div>
 

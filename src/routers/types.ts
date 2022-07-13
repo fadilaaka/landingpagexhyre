@@ -4,7 +4,10 @@ export interface LocationStates {
   "/"?: {};
   "/primary-market"?: {};
   "/secondary-market"?: {};
+  "/primary-market/:id"?: {};
+  "/secondary-market/:id"?: {};
   "/nft-voting"?: {};
+  "http://localhost:3001/swap"?: {};
   "/#"?: {};
   "/home2"?: {};
   //

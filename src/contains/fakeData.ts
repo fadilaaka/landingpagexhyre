@@ -193,6 +193,25 @@ const aTitles = [
   "non sodales neque sodales ut etiam sit amet nisl purus",
 ];
 
+export const nftName = [
+  'Alif - Type 72 - X',
+  'Alif - Type 38 - X',
+  'Alif - Type 34 - B',
+  'Alif - Type 36 - A',
+  'Alif - Type 34 - C',
+  'Alif - Type 34 - X',
+  'Newton - Cyprus - 2 BR-B - X',
+  'Newton - Cyprus - 2 BR-A - X',
+  'Newton - Cyprus - 1 BR -- X',
+  'Newton - Bahama - 4 BR - C',
+  'Newton - Bahama - 6 BR - A',
+  'Newton - Champa - Superior Corner - C',
+  'Newton - Champa - Superior Bridge 2 - X',
+  'Newton - Champa - Superior - A',
+  'Newton - Cyprus - ST-C - A',
+  'Newton - Champa - Deluxe - X',
+]
+
 function _getTitleRd() {
   return aTitles[Math.floor(Math.random() * aTitles.length)];
 }
