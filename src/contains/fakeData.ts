@@ -9,29 +9,35 @@ import avatar8 from "images/avatars/Image-8.png";
 import avatar9 from "images/avatars/Image-9.png";
 import avatar10 from "images/avatars/Image-10.png";
 //
-import nfts1 from "images/nfts/alif/1.png";
-import nfts2 from "images/nfts/alif/2.png";
-import nfts3 from "images/nfts/alif/3.png";
-import nfts4 from "images/nfts/alif/4.png";
-import nfts5 from "images/nfts/alif/5.png";
-import nfts6 from "images/nfts/alif/6.png";
-import nfts7 from "images/nfts/alif/7.png";
-import nfts8 from "images/nfts/alif/8.png";
-import nfts9 from "images/nfts/alif/9.png";
-import nfts10 from "images/nfts/alif/10.png";
-import nfts11 from "images/nfts/newton/11.png";
-import nfts12 from "images/nfts/newton/12.png";
-import nfts13 from "images/nfts/newton/13.png";
-import nfts14 from "images/nfts/newton/14.png";
-import nfts15 from "images/nfts/newton/15.png";
-import nfts16 from "images/nfts/newton/16.png";
-import nfts17 from "images/nfts/newton/13.png";
-import nfts18 from "images/nfts/newton/14.png";
-import nfts19 from "images/nfts/newton/15.png";
-import nfts20 from "images/nfts/newton/16.png";
+import nfts1 from "images/nfts/alif/1.webp";
+import nfts2 from "images/nfts/alif/2.webp";
+import nfts3 from "images/nfts/alif/3.webp";
+import nfts4 from "images/nfts/alif/4.webp";
+import nfts5 from "images/nfts/alif/5.webp";
+import nfts6 from "images/nfts/alif/6.webp";
+import nfts7 from "images/nfts/alif/7.webp";
+import nfts8 from "images/nfts/alif/8.webp";
+import nfts9 from "images/nfts/alif/9.webp";
+import nfts10 from "images/nfts/alif/10.webp";
+import nfts11 from "images/nfts/newton/11.webp";
+import nfts12 from "images/nfts/newton/12.webp";
+import nfts13 from "images/nfts/newton/13.webp";
+import nfts14 from "images/nfts/newton/14.webp";
+import nfts15 from "images/nfts/newton/15.webp";
+import nfts16 from "images/nfts/newton/16.webp";
+import nfts17 from "images/nfts/newton/13.webp";
+import nfts18 from "images/nfts/newton/14.webp";
+import nfts19 from "images/nfts/newton/15.webp";
+import nfts20 from "images/nfts/newton/16.webp";
 import nftsLarge1 from "images/nfts/large1.png";
 import nftsLarge2 from "images/nfts/large2.png";
 import nftsLarge3 from "images/nfts/large3.png";
+//
+import nftcollect1 from "images/nfts/collectibles/1.webp"
+import nftcollect2 from "images/nfts/collectibles/3.webp"
+import nftcollect3 from "images/nfts/collectibles/2.webp"
+import nftcollect4 from "images/nfts/collectibles/4.webp"
+import nftcollect5 from "images/nfts/collectibles/5.webp"
 //
 import nftsCat1 from "images/nfts/cat1.png";
 import nftsCat2 from "images/nfts/cat2.png";
@@ -78,6 +84,7 @@ export const nftsImgs:any = {
 };
 
 export const nftsImgs2 = [nfts1, nfts2, nfts3, nfts4, nfts5];
+export const nftscollectibles = [nftcollect1, nftcollect2, nftcollect3, nftcollect4, nftcollect5];
 
 export const nftsAbstracts = [
   "https://images.pexels.com/photos/3631430/pexels-photo-3631430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",

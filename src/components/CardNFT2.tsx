@@ -2,13 +2,14 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "shared/Avatar/Avatar";
 import NcImage from "shared/NcImage/NcImage";
-import { nftsImgs } from "contains/fakeData";
+import { nftsImgs, nftscollectibles } from "contains/fakeData";
 import ItemTypeImageIcon from "./ItemTypeImageIcon";
 import LikeButton from "./LikeButton";
 import Prices from "./Prices";
 import { ClockIcon } from "@heroicons/react/outline";
 import ItemTypeVideoIcon from "./ItemTypeVideoIcon";
 import Prices3 from "./Prices3";
+import ButtonSecondary from "shared/Button/ButtonSecondary";
 
 export interface CardNFTProps {
   className?: string;
@@ -41,10 +42,10 @@ const CardNFT2: FC<CardNFTProps> = ({ className = "", isLiked, type, id }) => {
     );
   };
   
-  const randInt = Math.floor(Math.random() * nftsImgs["alif"].length);
+  // const randInt = Math.floor(Math.random() * nftsImgs["alif"].length);
 
-  const nftType = type === "alif" ? nftsImgs["alif"] : nftsImgs["newton"];
-  const nftRandom = nftType[randInt]
+  // const nftType = type === "alif" ? nftsImgs["alif"] : nftsImgs["newton"];
+  // const nftRandom = nftType[randInt]
 
   return (
     <div
@@ -55,7 +56,7 @@ const CardNFT2: FC<CardNFTProps> = ({ className = "", isLiked, type, id }) => {
         <div>
           <NcImage
             containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0 rounded-3xl overflow-hidden z-0"
-            src={nftRandom[0]}
+            src={nftscollectibles[Math.floor(Math.random() * nftscollectibles.length)]}
             className="object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-300 ease-in-out will-change-transform"
           />
         </div>
@@ -78,7 +79,7 @@ const CardNFT2: FC<CardNFTProps> = ({ className = "", isLiked, type, id }) => {
             {Math.floor(Math.random() * 90) + 10} in stock
           </span>
         </div>
-        <h2 className={`text-lg font-medium`}>{nftRandom[1]}</h2>
+        <h2 className={`text-lg font-medium`}>Name_Assets</h2>
 
         <div className="w-2d4 w-full border-b border-neutral-100 dark:border-neutral-700"></div>
 
@@ -87,13 +88,16 @@ const CardNFT2: FC<CardNFTProps> = ({ className = "", isLiked, type, id }) => {
           <div className="flex items-center text-sm text-neutral-500 dark:text-neutral-400">
             <ClockIcon className="w-4 h-4" />
             <span className="ml-1 mt-0.5">
-            {nftRandom[3]} days left
+            {Math.floor(Math.random() * nftscollectibles.length)} days left
             </span>
           </div>
         </div>
+        <div className="text-center">
+          <ButtonSecondary className="bg-sky-600 dark:bg-[#495C83] text-white hover:text-black">Open Bid</ButtonSecondary>
+        </div>
       </div>
 
-      <Link to={"/nft-detailt"} className="absolute inset-0"></Link>
+      {/* <Link to={"/nft-detailt"} className="absolute inset-0"></Link> */}
     </div>
   );
 };

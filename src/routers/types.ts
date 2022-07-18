@@ -14,7 +14,8 @@ export interface LocationStates {
   "/primary-market/:type/:id"?: {};
   "/secondary-market/:type/:id"?: {};
   "/nft-voting"?: {};
-  "http://localhost:3001/swap"?: {};
+  "http://localhost:3000/swap"?: {};
+  "http://localhost:3000/proposals"?: {};
   "/#"?: {};
   "/home2"?: {};
   //

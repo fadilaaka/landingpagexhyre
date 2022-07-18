@@ -31,7 +31,7 @@ const TabDetail = ({data}: any) => {
                       {Math.random() > 0.5 ? "Listed by" : "Minted by"}
                     </span> */}
                   <div className="share inline-block absolute mb-5">
-                    <span className="ml-1">Buyed {item.buyed}% by</span>
+                    <span className="ml-1">Bought {item.buyed}% by</span>
                     <span className="font-medium text-neutral-900 dark:text-neutral-200 ml-1 mr-2">
                       {item.name}
                     </span>

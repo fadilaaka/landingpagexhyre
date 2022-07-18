@@ -1,18 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, {FC, useEffect, useState} from "react";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
-import imagePng from "images/hero-right-3.png";
-import imageAlif from "images/Alif - Type 72 - X.png"
-import imageChampa from "images/Newton - Champa - Superior - S.png"
-import imageCyprus from "images/Newton - Cyprus - ST-B - S.png"
-import imageBahama from "images/Newton - Bahama - 2 BR-C - A.png";
-import imageNewtonTower from "images/NewtonTower.png";
-import imageAlifHomeSection from "images/AlifHomeCompleteSection.png";
-import BackgroundImage from "images/Background 3.png"
+import imageAlif from "images/Alif - Type 72 - X.webp"
+import imageCyprus from "images/Newton - Cyprus - ST-B - S.webp"
+import imageBahama from "images/Newton - Bahama - 2 BR-C - A.webp";
+import imageNewtonTower from "images/NewtonTower.webp";
+import imageAlifHomeSection from "images/AlifHomeCompleteSection.webp";
 import AOS from "aos";
 import 'aos/dist/aos.css';
 import {FaStore, FaStoreAlt} from 'react-icons/fa'
-
+import { Helmet } from "react-helmet";
 export interface SectionHero2Props {
     children?: React.ReactNode;
     className?: string;
@@ -22,7 +19,7 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
     const [loading, setLoading] = useState(true);    
     useEffect(() => {
         AOS.init();
-        setTimeout(() => setLoading(false), 5000);
+        setTimeout(() => setLoading(false), 3000);
     }, [])
     // darkBg: {
 	// 	position: 'fixed',
@@ -35,6 +32,9 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
     {
         loading === false ? (
             <div>
+            <Helmet>
+                <title>Xhyre</title>
+            </Helmet>
             {/* <img src={BackgroundImage} className='fixed w-screen h-screen object-cover top-0 select-none' onContextMenu={() => {return false}}/> */}
                 <div
                 className={`nc-SectionHero2 flex flex-col-reverse lg:flex-col relative ${className}`}
@@ -66,7 +66,7 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                                 </div>
                             </div>
                             <div className="flex-1 justify-center text-center my-4">
-                                <span className='text-[2rem] font-semibold text-black text-center dark:text-white' data-aos="fade-down" data-aos-duration="2000">The First Secured Real Estate Exchange Market in The World</span>
+                                <span className='text-[2rem] font-semibold text-black text-center dark:text-white' data-aos="fade-down" data-aos-duration="2000">The First Secured Fractionalized Real Estate Exchange Marketing in The World</span>
                                 <div className="flex flex-row items-center justify-center space-x-12 mt-20" data-aos="zoom-in" data-aos-duration='1500' data-aos-delay='1500'>
                                     <ButtonPrimary className="bg-[#FFD447] opacity-100 hover:opacity-50 hover:bg-[#FFD447] dark:bg-[##D9A443]" href="/primary-market/newton">
                                         <FaStore color="#000000"/>
@@ -77,9 +77,15 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                                         <span className="ml-2 text-center text-white dark:text-black">Secondary Market</span>
                                     </ButtonPrimary>
                                 </div>
-                                <div className="flex flex-row" data-aos="fade-down" data-aos-duration="1000">
-                                    <span className="text-left px-6" style={{marginTop: 75}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</span>
-                                    <span className="text-left px-6" style={{marginTop: 160}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</span>
+                                <div className="flex flex-row text-justify" data-aos="fade-down" data-aos-duration="1000">
+                                    <div className="flex-initial w-1/2 px-6 mt-[70px]">
+                                        <h2 className="font-bold underline">Primary Market</h2>
+                                        <span className="text-left">NFT based fractional property primary marketplace by using blockchain technology, as the 1st offering platform to benefit from initially offered prices</span>
+                                    </div>
+                                    <div className="flex-initial w-1/2 px-6 mt-[70px]">
+                                        <h2 className="font-bold underline">Secondary Market</h2>
+                                        <span className="text-left">Capitalizing on such a high-yielding investment opportunity, driven by property capital appreciation on secondary marketplace, through traded NFT based proof of fractional property ownership, besides the respective percentage of monthly rental income</span>
+                                    </div>
                                 </div>
                             </div>
                             {/* <div className="flex-shrink-0 lg:w-1/2 flex flex-col items-center space-y-8 sm:space-y-10 pr-4 pl-4 justify-center">
@@ -94,27 +100,10 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                             </div> */}
                         </div>
                     </div>
-                    <div className="flex flex-row mx-8 mt-8">
-                        <div className="flex flex-col">
+                    <div className="flex flex-row mx-8 justify-center items-end">
+                        <div className="flex flex-col text-justify w-1/2 mx-6">
                             <div className="flex flex-col justify-center items-center">
-                                <img style={{width: '50%'}} src={imageNewtonTower} alt="hero" className="float-right"/> 
-                                <h2 className="font-bold underline">Newton</h2>
-                            </div>
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
-                            <div className="flex flex-row items-center justify-center space-x-4 mt-8 mb-8">
-                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/primary-market/newton">
-                                    {/* <FaStore className="text-black"/> */}
-                                    <span className="text-center text-black">Newton Primary Market</span>
-                                </ButtonPrimary>
-                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market/newton">
-                                    {/* <FaStoreAlt className="text-black"/> */}
-                                    <span className="text-center text-black">Newton Secondary Market</span>
-                                </ButtonPrimary>
-                            </div>
-                        </div>
-                        <div className="flex flex-col">
-                            <div className="flex flex-col justify-center items-center">
-                                <img style={{width: '90%'}} src={imageAlifHomeSection} alt="hero" className="float-right"/> 
+                                <img style={{width: '100%'}} src={imageAlifHomeSection} alt="hero" className="float-right mb-12"/> 
                                 <h2 className="font-bold underline">Alif Homes</h2>
                             </div>
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
@@ -126,6 +115,23 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                                 <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market/alif">
                                     {/* <FaStoreAlt className="text-black"/> */}
                                     <span className="text-center text-black">Alif Homes Secondary Market</span>
+                                </ButtonPrimary>
+                            </div>
+                        </div>
+                        <div className="flex flex-col text-justify w-1/2 mx-6">
+                            <div className="flex flex-col justify-center items-center">
+                                <img style={{width: '35%'}} src={imageNewtonTower} alt="hero" className="float-right mb-12"/> 
+                                <h2 className="font-bold underline">Newton</h2>
+                            </div>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
+                            <div className="flex flex-row items-center justify-center space-x-4 mt-8 mb-8">
+                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/primary-market/newton">
+                                    {/* <FaStore className="text-black"/> */}
+                                    <span className="text-center text-black">Newton Primary Market</span>
+                                </ButtonPrimary>
+                                <ButtonPrimary className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]" href="/secondary-market/newton">
+                                    {/* <FaStoreAlt className="text-black"/> */}
+                                    <span className="text-center text-black">Newton Secondary Market</span>
                                 </ButtonPrimary>
                             </div>
                         </div>

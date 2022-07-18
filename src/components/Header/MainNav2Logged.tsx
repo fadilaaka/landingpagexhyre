@@ -74,8 +74,8 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             </form>
           </div> */}
         </div>
-        <a type="button" href="http://localhost:3001/swap" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Swap</a>
-        <a type="button" href="http://localhost:3001/proposals" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Voting</a>
+        <a type="button" href="http://localhost:3000/swap" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Swap</a>
+        <a type="button" href="http://localhost:3000/proposals" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Voting</a>
         <SwitchDarkMode />
         <div className="flex-shrink-0 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1">
           {/* <ButtonPrimary> */}

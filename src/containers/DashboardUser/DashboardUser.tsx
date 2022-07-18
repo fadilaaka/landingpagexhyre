@@ -26,13 +26,12 @@ export interface AuthorPageProps {
 const DashboardUser: FC<AuthorPageProps> = ({ className = "" }) => {
   let [categories] = useState([
     "Collectibles",
-    "Bid",
   ]);
 
   return (
     <div className={`nc-AuthorPage  ${className}`} data-nc-id="AuthorPage">
       <Helmet>
-        <title>Creator || Ciscryp NFT Template</title>
+        <title>Dashboard</title>
       </Helmet>
 
       {/* HEADER */}
@@ -49,7 +48,7 @@ const DashboardUser: FC<AuthorPageProps> = ({ className = "" }) => {
             <div className="pt-5 md:pt-1 md:ml-6 flex-grow">
               <div className="max-w-screen-sm ">
                 <h2 className="inline-flex items-center text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                  <span>Dony Herrera</span>
+                  <span>Account</span>
                   <VerifyIcon
                     className="ml-2"
                     iconClass="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"
@@ -57,7 +56,7 @@ const DashboardUser: FC<AuthorPageProps> = ({ className = "" }) => {
                 </h2>
                 <div className="flex items-center text-sm font-medium space-x-2.5 mt-2.5 text-green-600 cursor-pointer">
                   <span className="text-neutral-700 dark:text-neutral-300">
-                    4.0xc4c16ac453sa645a...b21a{" "}
+                    0x58B751479...BA21{" "}
                   </span>
                   <svg width="20" height="21" viewBox="0 0 20 21" fill="none">
                     <path
@@ -78,8 +77,7 @@ const DashboardUser: FC<AuthorPageProps> = ({ className = "" }) => {
                 </div>
 
                 <span className="block mt-4 text-sm text-neutral-500 dark:text-neutral-400">
-                  Punk #4786 / An OG Cryptopunk Collector, hoarder of NFTs.
-                  Contributing to @ether_cards, an NFT Monetization Platform.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </span>
               </div>
               <div className="mt-4 ">
@@ -121,7 +119,7 @@ const DashboardUser: FC<AuthorPageProps> = ({ className = "" }) => {
                 {/* LOOP ITEMS */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10 mt-8 lg:mt-10">
                     {Array.from("11111111").map((_, index) => (
-                        <CardNFT2 key={index} type="alif" />
+                        <CardNFT2 key={index} />
                     ))}
                 </div>
 

@@ -64,21 +64,25 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
     return Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
   }
 
-  const maxREX = type === "alif"
+  let maxREX = type === "alif"
   ? nftsImgs["alif"][id][2]
   : nftsImgs["newton"][id][2];
 
-  const [inputREX, setInputREX] = useState(0);
+  const [inputREX, setInputREX] = useState("");
   const [voterList, setVoterList] = useState<Data[]>([]);
 
-  const percentage = ((inputREX/maxREX)*100).toFixed(2);
+  const percentage = ((parseInt(inputREX)/maxREX)*100).toFixed(2);
+
+  let totalREX = 0;
 
   const handleOnChange = (e: any) => {
     e.preventDefault();
-    if(Number(e.target.value) > maxREX) {
-      setInputREX(maxREX)
-    } else {
-      setInputREX(e.target.value)
+    if(e.target.value !== "0") {
+      if(Number(e.target.value) > maxREX || Number(e.target.value) > selisih) {
+        setInputREX(selisih.toString())
+      } else {
+        setInputREX(e.target.value)
+      }
     }
   }
   const inputChangedHandler = (e: any) => {
@@ -89,11 +93,12 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
   console.log(voterList);
   console.log(voterList.length)
 
-  let totalREX = 0;
   for (const rex of voterList) {
     totalREX = totalREX + parseInt(rex.price);
   }
   console.log(totalREX)
+  const selisih = maxREX - totalREX;
+  console.log(`Selisih : ${selisih}`)
 
   if(totalREX > maxREX) {
     totalREX = maxREX
@@ -102,6 +107,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
 
   const now = new Date();
   console.log(now.toLocaleString());
+
   const handleOnClick = (e: any) => {
     setVoterList([...voterList, {
       name: "0x45cv6389sw...", 
@@ -110,10 +116,9 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
       time: now.toLocaleString(),
     }])
     setOpen(false);
+    setInputREX("");
     console.log(voterList);
   }
-
-  const [isFull, setIsFull] = useState(0)
 
   const Modal = () => {
     const cancelButtonRef = useRef(null);
@@ -168,11 +173,11 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
                         <div className="mt-2">
                           <div className="flex w-full items-center">
                             <FormItem label="Buy Nominal" >
-                              <Input placeholder="0" type="number" onChange={handleOnChange} value={inputREX}/>
+                              <Input placeholder="1" type="number" onChange={handleOnChange} value={inputREX} onKeyDown={(evt) => ["e", "E", "+", "-", ".", ","].includes(evt.key) && evt.preventDefault()} />
                             </FormItem>
                             <span className="mt-7 mx-2 font-semibold text-slate-600">REX</span>
                             <FormItem label="Valuation" >
-                              <Input placeholder="0" type="number" onChange={(e: any) => inputChangedHandler(e)} value={percentage}/>
+                              <Input placeholder="%" type="number" onChange={(e: any) => inputChangedHandler(e)} value={percentage}/>
                             </FormItem>
                             <span className="mt-7 mx-2 font-semibold text-slate-600">%</span>
                           </div>
@@ -218,7 +223,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
         {/* ---------- 1 ----------  */}
         <div className="pb-9 space-y-5">
           <div className="flex justify-between items-center">
-            <Badge name="Virtual Worlds" color="green" />
+            <Badge name="Assets" color="green" />
             <LikeSaveBtns />
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
@@ -317,7 +322,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
               disabled={totalPercentage.toString() === "100.00" ? true : false}
               onClick={() => setOpen(true)}
               >
-                {totalPercentage.toString() === "100.00" ? "Voting Closed" : "Buy Ownership"}
+                {totalPercentage.toString() === "100.00" ? "Closed" : "Buy Ownership"}
               </ButtonPrimary>
               <br />
               <br />

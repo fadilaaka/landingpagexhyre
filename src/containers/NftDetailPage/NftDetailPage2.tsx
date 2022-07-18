@@ -1,4 +1,4 @@
-import React, { FC, useState, Fragment } from "react";
+import React, { FC, useState, Fragment, useRef } from "react";
 import Avatar from "shared/Avatar/Avatar";
 import Badge from "shared/Badge/Badge";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
@@ -15,7 +15,6 @@ import {
   personNames,
 } from "contains/fakeData";
 import TimeCountDown from "./TimeCountDown";
-import TabDetail from "./TabDetail";
 import collectionPng from "images/nfts/collection.png";
 import ItemTypeVideoIcon from "components/ItemTypeVideoIcon";
 import LikeButton from "components/LikeButton";
@@ -41,61 +40,15 @@ const NftDetailPage2: FC<NftDetailPageProps> = ({
   className = "",
   isPreviewMode,
 }) => {
-  const [isVisable, setIsVisable] = useState(false);
-
-  const handleOpenMenu = () => setIsVisable(true);
-  const handleCloseMenu = () => setIsVisable(false);
-
   const { type, id }: Param = useParams();
-
-  const renderContent = () => {
-    return (
-      <Transition appear show={isVisable} as={Fragment}>
-        <Dialog
-          as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
-          onClose={handleCloseMenu}
-        >
-          <div className="fixed right-0 top-0 bottom-0 w-full md:w-auto z-max outline-none focus:outline-none">
-            <React.Fragment>
-              <Transition.Child
-                as={Fragment}
-                enter="transition duration-100 transform"
-                enterFrom="opacity-0 translate-x-14"
-                enterTo="opacity-100 translate-x-0"
-                leave="transition duration-150 transform"
-                leaveFrom="opacity-100 translate-x-0"
-                leaveTo="opacity-0 translate-x-14"
-              >
-                <div className="z-10 relative">
-                  <NavWallet onClickClose={handleCloseMenu} />
-                </div>
-              </Transition.Child>
-
-              <Transition.Child
-                as={Fragment}
-                enter=" duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave=" duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <Dialog.Overlay className="fixed inset-0 bg-neutral-900 bg-opacity-50" />
-              </Transition.Child>
-            </React.Fragment>
-          </div>
-        </Dialog>
-      </Transition>
-    );
-  };
+  
   const renderSection1 = () => {
     return (
       <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
         {/* ---------- 1 ----------  */}
         <div className="pb-9 space-y-5">
           <div className="flex justify-between items-center">
-            <Badge name="Virtual Worlds" color="green" />
+            <Badge name="Assets" color="green" />
             <LikeSaveBtns />
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
@@ -149,7 +102,7 @@ const NftDetailPage2: FC<NftDetailPageProps> = ({
               </span>
               <span className="text-3xl xl:text-4xl font-semibold text-green-500">
               {`${
-                  type == "alif"
+                  type === "alif"
                     ? nftsImgs["alif"][id][2]
                     : nftsImgs["newton"][id][2]
                 } REX`}
@@ -178,7 +131,6 @@ const NftDetailPage2: FC<NftDetailPageProps> = ({
       className={`nc-NftDetailPage  ${className}`}
       data-nc-id="NftDetailPage"
     >
-      {renderContent()}
       {/* MAIn */}
       <main className="container mt-11 flex ">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
