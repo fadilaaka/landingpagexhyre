@@ -164,17 +164,17 @@ const NftDetailPage2: FC<NftDetailPageProps> = ({
       </main>
 
       {/* OTHER SECTION */}
-      {!isPreviewMode && (
-        <div className="container py-24 lg:py-32">
-          {/* SECTION 1 */}
-          <div className="relative py-24 lg:py-28">
-            <BackgroundSection />
-            <SectionSliderCategories />
-          </div>
+      {!isPreviewMode && ( ""
+        // <div className="container py-24 lg:py-32">
+          // {/* SECTION 1 */}
+          // <div className="relative py-24 lg:py-28">
+           // {/* <BackgroundSection /> */}
+           // {/* <SectionSliderCategories /> */}
+          // </div>
 
-          {/* SECTION */}
-          <SectionBecomeAnAuthor className="pt-24 lg:pt-32" />
-        </div>
+          //{/* SECTION */}
+          // <SectionBecomeAnAuthor className="pt-24 lg:pt-32" />
+        // </div>
       )}
     </div>
   );

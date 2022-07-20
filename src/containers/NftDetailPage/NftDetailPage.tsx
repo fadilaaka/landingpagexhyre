@@ -80,12 +80,10 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
 
   const handleOnChange = (e: any) => {
     e.preventDefault();
-    if (e.target.value !== "0") {
-      if (Number(e.target.value) > maxREX || Number(e.target.value) > selisih) {
-        setInputREX(selisih.toString());
-      } else {
-        setInputREX(e.target.value);
-      }
+    if (Number(e.target.value) > maxREX || Number(e.target.value) > selisih) {
+      setInputREX(selisih.toString());
+    } else {
+      setInputREX(e.target.value);
     }
   };
   const inputChangedHandler = (e: any) => {
@@ -112,17 +110,24 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
   console.log(now.toLocaleString());
 
   const handleOnClick = (e: any) => {
-    setVoterList([
-      ...voterList,
-      {
-        name: "0x45cv6389sw...",
-        price: inputREX,
-        buyed: percentage,
-        time: now.toLocaleString(),
-      },
-    ]);
-    setOpen(false);
-    setInputREX("");
+    if(inputREX === "0") {
+      alert("Can't input 0 REX")
+      setInputREX("");
+    } else if(isNaN(parseFloat(inputREX))) {
+      alert("Can't input Null")
+    } else {
+      setVoterList([
+        ...voterList,
+        {
+          name: "0x45cv6389sw...",
+          price: inputREX,
+          buyed: percentage,
+          time: now.toLocaleString(),
+        },
+      ]);
+      setOpen(false);
+      setInputREX("");
+    }
     console.log(voterList);
   };
 
@@ -180,7 +185,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
                           <div className="flex w-full items-center">
                             <FormItem label="Buy Nominal">
                               <Input
-                                placeholder="1"
+                                placeholder="0"
                                 type="number"
                                 onChange={handleOnChange}
                                 value={inputREX}
@@ -309,11 +314,11 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
               </span>
             </div> */}
             <div className="thrasehold flex w-full relative lg:absolute mb-5">
-              <span className=" text-green-500 flex justify-end absolute lg:static -bottom-3">
-                <span className="truncate w-[4em] block">{totalREX}</span>
-                <span className="block ml-1"> REX</span>
+              <span className="text-green-500 justify-end absolute lg:static -bottom-3">
+                <span className="truncate w-[6em] hover:text-clip">{totalREX}</span>
+                <span>&nbsp;REX</span>
               </span>
-              <span className="text-sm text-slate-400 lg:pl-3 pl-28 absolute lg:relative -bottom-3 lg:-bottom-[0.18rem]">
+              <span className="text-sm text-slate-400 lg:pl-0 pl-28 absolute lg:relative -bottom-3 lg:-bottom-[0.18rem]">&nbsp;
                 {`collected from ${
                   type === "alif"
                     ? nftsImgs["alif"][id][2]
@@ -469,17 +474,17 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
       </main>
 
       {/* OTHER SECTION */}
-      {!isPreviewMode && (
-        <div className="container py-24 lg:py-32">
-          {/* SECTION 1 */}
-          <div className="relative py-24 lg:py-28">
-            <BackgroundSection />
-            <SectionSliderCategories />
-          </div>
+      {!isPreviewMode && ( ""
+        // <div className="container py-24 lg:py-32">
+          // {/* SECTION 1 */}
+          // <div className="relative py-24 lg:py-28">
+           // {/* <BackgroundSection /> */}
+           // {/* <SectionSliderCategories /> */}
+          // </div>
 
-          {/* SECTION */}
-          <SectionBecomeAnAuthor className="pt-24 lg:pt-32" />
-        </div>
+          //{/* SECTION */}
+          // <SectionBecomeAnAuthor className="pt-24 lg:pt-32" />
+        // </div>
       )}
     </div>
   );

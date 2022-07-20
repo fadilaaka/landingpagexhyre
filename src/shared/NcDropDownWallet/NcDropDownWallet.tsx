@@ -2,6 +2,7 @@ import React, { FC, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Link, useParams } from "react-router-dom";
 import {FaEthereum} from "react-icons/fa"
+import ButtonPrimary from "shared/Button/ButtonPrimary";
 
 // type Param = {
 //   data: any;
@@ -76,13 +77,16 @@ const NcDropDownWallet: FC<NcDropDownProps> = ({
           className={`px-1 py-3 text-sm text-neutral-6000 dark:text-neutral-300 border-2 dark:border-white-400 absolute ${panelMenusClass} right-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl shadow-lg dark:ring-white ring-opacity-5 dark:ring-opacity-10 z-30`}
         >
             <div className="flex flex-col mb-8 px-4">
-                <h1 className="text-black dark:text-white self-center">Account 1</h1>
-                <span className="text-slate-400 dark:text-slate-300 truncate">{data.address}</span>
+              <h1 className="text-black dark:text-white self-center">Account 1</h1>
+              <span className="text-slate-400 dark:text-slate-300 truncate">{data.address}</span>
             </div>
             <div className="flex flex-col justify-center items-center mb-8">
-                <FaEthereum className="mb-8" size={40}/>
-                <h1 className="text-black dark:text-white">{data.balance} ETH</h1>
-                <h3 className="text-slate-400 dark:text-slate-300">$1.088,24</h3>
+              <FaEthereum className="mb-8" size={40}/>
+              <h1 className="text-black dark:text-white">{data.balance} ETH</h1>
+              <h3 className="text-slate-400 dark:text-slate-300">$1.088,24</h3>
+            </div>
+            <div className="flex justify-center">
+              <ButtonPrimary href="/dashboard-user">Dashboard User</ButtonPrimary>
             </div>
         </Menu.Items>
       </Transition>
