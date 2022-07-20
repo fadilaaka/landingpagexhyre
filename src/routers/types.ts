@@ -14,8 +14,8 @@ export interface LocationStates {
   "/primary-market/:type/:id"?: {};
   "/secondary-market/:type/:id"?: {};
   "/nft-voting"?: {};
-  "http://localhost:3000/swap"?: {};
-  "http://localhost:3000/proposals"?: {};
+  "http://exchanger.bosscamel.com/swap"?: {};
+  "http://exchanger.bosscamel.com/proposals"?: {};
   "/#"?: {};
   "/home2"?: {};
   //

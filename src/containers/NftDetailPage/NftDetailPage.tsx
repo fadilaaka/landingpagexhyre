@@ -5,7 +5,8 @@ import React, {
   useRef,
   ReactNode,
   useEffect,
-} from "react";import Avatar from "shared/Avatar/Avatar";
+} from "react";
+import Avatar from "shared/Avatar/Avatar";
 import Badge from "shared/Badge/Badge";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
@@ -47,11 +48,11 @@ type Param = {
 };
 
 type Data = {
-  name: string,
-  price: any,
-  buyed: any,
-  time: string
-}
+  name: string;
+  price: any;
+  buyed: any;
+  time: string;
+};
 
 const NftDetailPage: FC<NftDetailPageProps> = ({
   className = "",
@@ -61,64 +62,69 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
   const { type, id }: Param = useParams();
 
   const randomNumber = (length: any) => {
-    return Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
-  }
+    return Math.floor(
+      Math.pow(10, length - 1) +
+        Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1)
+    );
+  };
 
-  let maxREX = type === "alif"
-  ? nftsImgs["alif"][id][2]
-  : nftsImgs["newton"][id][2];
+  let maxREX =
+    type === "alif" ? nftsImgs["alif"][id][2] : nftsImgs["newton"][id][2];
 
   const [inputREX, setInputREX] = useState("");
   const [voterList, setVoterList] = useState<Data[]>([]);
 
-  const percentage = ((parseInt(inputREX)/maxREX)*100).toFixed(2);
+  const percentage = ((parseFloat(inputREX) / maxREX) * 100).toFixed(2);
 
   let totalREX = 0;
 
   const handleOnChange = (e: any) => {
     e.preventDefault();
-    if(e.target.value !== "0") {
-      if(Number(e.target.value) > maxREX || Number(e.target.value) > selisih) {
-        setInputREX(selisih.toString())
+    if (e.target.value !== "0") {
+      if (Number(e.target.value) > maxREX || Number(e.target.value) > selisih) {
+        setInputREX(selisih.toString());
       } else {
-        setInputREX(e.target.value)
+        setInputREX(e.target.value);
       }
     }
-  }
+  };
   const inputChangedHandler = (e: any) => {
     const updatedKeyword = e.target.value;
     // May be call for search result
-  }
+  };
 
   console.log(voterList);
-  console.log(voterList.length)
+  console.log(voterList.length);
 
   for (const rex of voterList) {
-    totalREX = totalREX + parseInt(rex.price);
+    totalREX = totalREX + parseFloat(rex.price);
   }
-  console.log(totalREX)
+  console.log(totalREX);
   const selisih = maxREX - totalREX;
-  console.log(`Selisih : ${selisih}`)
+  console.log(`Selisih : ${selisih}`);
 
-  if(totalREX > maxREX) {
-    totalREX = maxREX
+  if (totalREX > maxREX) {
+    totalREX = maxREX;
   }
-  let totalPercentage:any = ((totalREX/maxREX)*100).toFixed(2);
+  let totalPercentage: any = ((totalREX / maxREX) * 100).toFixed(2);
 
   const now = new Date();
   console.log(now.toLocaleString());
 
   const handleOnClick = (e: any) => {
-    setVoterList([...voterList, {
-      name: "0x45cv6389sw...", 
-      price: inputREX, 
-      buyed: percentage,
-      time: now.toLocaleString(),
-    }])
+    setVoterList([
+      ...voterList,
+      {
+        name: "0x45cv6389sw...",
+        price: inputREX,
+        buyed: percentage,
+        time: now.toLocaleString(),
+      },
+    ]);
     setOpen(false);
     setInputREX("");
     console.log(voterList);
-  }
+  };
 
   const Modal = () => {
     const cancelButtonRef = useRef(null);
@@ -172,18 +178,38 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
                         </Dialog.Title>
                         <div className="mt-2">
                           <div className="flex w-full items-center">
-                            <FormItem label="Buy Nominal" >
-                              <Input placeholder="1" type="number" onChange={handleOnChange} value={inputREX} onKeyDown={(evt) => ["e", "E", "+", "-", ".", ","].includes(evt.key) && evt.preventDefault()} />
+                            <FormItem label="Buy Nominal">
+                              <Input
+                                placeholder="1"
+                                type="number"
+                                onChange={handleOnChange}
+                                value={inputREX}
+                                onKeyDown={(evt) =>
+                                  ["e", "E", "+", "-"].includes(evt.key) &&
+                                  evt.preventDefault()
+                                }
+                              />
                             </FormItem>
-                            <span className="mt-7 mx-2 font-semibold text-slate-600">REX</span>
-                            <FormItem label="Valuation" >
-                              <Input placeholder="%" type="number" onChange={(e: any) => inputChangedHandler(e)} value={percentage}/>
+                            <span className="mt-7 mx-2 font-semibold text-slate-600">
+                              REX
+                            </span>
+                            <FormItem label="Valuation">
+                              <Input
+                                placeholder="%"
+                                type="number"
+                                onChange={(e: any) => inputChangedHandler(e)}
+                                value={percentage}
+                              />
                             </FormItem>
-                            <span className="mt-7 mx-2 font-semibold text-slate-600">%</span>
+                            <span className="mt-7 mx-2 font-semibold text-slate-600">
+                              %
+                            </span>
                           </div>
                           <div className="justify-center flex">
-                            <button className="ttnc-ButtonPrimary disabled:bg-opacity-70 bg-primary-6000 hover:bg-primary-700 text-neutral-50 py-3 rounded-full text-sm mt-6 w-full justify-self-auto font-semibold"
-                            onClick={handleOnClick}>
+                            <button
+                              className="ttnc-ButtonPrimary disabled:bg-opacity-70 bg-primary-6000 hover:bg-primary-700 text-neutral-50 py-3 rounded-full text-sm mt-6 w-full justify-self-auto font-semibold"
+                              onClick={handleOnClick}
+                            >
                               Buy
                             </button>
                           </div>
@@ -228,8 +254,8 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
             {type === "alif"
-            ? nftsImgs["alif"][id][1]
-            : nftsImgs["newton"][id][1]}          
+              ? nftsImgs["alif"][id][1]
+              : nftsImgs["newton"][id][1]}
           </h2>
 
           {/* ---------- 4 ----------  */}
@@ -270,7 +296,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
         {/* ---------- 7 ----------  */}
         {/* PRICE */}
         <div className="pb-9 pt-14">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between relative">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between relative">
             {/* <div className="flex-1 flex flex-col sm:flex-row items-baseline p-6 border-2 border-green-500 rounded-xl relative">
               <span className="absolute bottom-full translate-y-1 py-1 px-1.5 bg-white dark:bg-neutral-900 text-sm text-neutral-500 dark:text-neutral-400">
                 Current Price
@@ -282,50 +308,56 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
                 ( ≈ $3,221.22)
               </span>
             </div> */}
-            <div className="thrasehold flex w-full absolute mb-5">
-              <span className="text-green-500 mr-3">{totalREX} REX</span>
-              <span className="text-sm  text-slate-400">
-              {`collected from ${
+            <div className="thrasehold flex w-full relative lg:absolute mb-5">
+              <span className=" text-green-500 flex justify-end absolute lg:static -bottom-3">
+                <span className="truncate w-[4em] block">{totalREX}</span>
+                <span className="block ml-1"> REX</span>
+              </span>
+              <span className="text-sm text-slate-400 lg:pl-3 pl-28 absolute lg:relative -bottom-3 lg:-bottom-[0.18rem]">
+                {`collected from ${
                   type === "alif"
                     ? nftsImgs["alif"][id][2]
                     : nftsImgs["newton"][id][2]
-              } REX`}
+                } REX`}
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-            <Tooltip message={totalPercentage.toString()}>
-              <div
-                className="bg-green-600 h-2.5 rounded-full"
-                style={{ width: `${totalPercentage}%` }}
-              ></div>
-            </Tooltip>
+              <Tooltip message={totalPercentage.toString()}>
+                <div
+                  className="bg-green-600 h-2.5 rounded-full"
+                  style={{ width: `${totalPercentage}%` }}
+                ></div>
+              </Tooltip>
             </div>
-            <span
-              className="text-sm text-neutral-500 dark:text-neutral-400 sm:mt-0 sm:ml-10 justify-center"
-              style={{ width: "8em" }}
-            >
+            <span className="text-sm text-neutral-500 dark:text-neutral-400  sm:ml-4 justify-center absolute lg:static right-0 top-10 lg:top-8 lg:w-28">
               {`${
                 type == "alif"
                   ? nftsImgs["alif"][id][3]
                   : nftsImgs["newton"][id][3]
               } days left`}
             </span>
-            <span className="text-sm text-slate-400 dark:text-neutral-400 top-8 -left-10  sm:mt-0 sm:ml-10 absolute">
-              {voterList.length} voters
+            <span className="text-sm text-slate-400 dark:text-neutral-400 top-10 lg:top-8 lg:-left-10  sm:mt-0 sm:ml-10 absolute">
+              {voterList.length} buyers
             </span>
           </div>
           <br />
-              <ButtonPrimary
-              className="absolute left-0 top-12"
-              data-modal-toggle="popup-modal"
-              type="button"
-              disabled={totalPercentage.toString() === "100.00" ? true : false}
-              onClick={() => setOpen(true)}
-              >
-                {totalPercentage.toString() === "100.00" ? "Closed" : "Buy Ownership"}
-              </ButtonPrimary>
-              <br />
-              <br />
+          <ButtonPrimary
+            className={`absolute top-8 ${
+              totalPercentage.toString() === "100.00"
+                ? "bg-slate-500 hover:bg-slate-500"
+                : ""
+            }`}
+            data-modal-toggle="popup-modal"
+            type="button"
+            disabled={totalPercentage.toString() === "100.00" ? true : false}
+            onClick={() => setOpen(true)}
+          >
+            {totalPercentage.toString() === "100.00"
+              ? "Closed"
+              : "Buy Ownership"}
+          </ButtonPrimary>
+          <br />
+          <br />
           {/* {showModal ? (
             <div
               id="popup-modal"
@@ -392,7 +424,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
         </div>
         {/* ---------- 9 ----------  */}
         <div className="pt-9">
-          <TabDetail data={voterList}/>
+          <TabDetail data={voterList} />
         </div>
       </div>
     );
@@ -412,12 +444,12 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             {/* HEADING */}
             <div className="relative">
               <NcImage
-              src={
-                type === "alif"
-                  ? nftsImgs["alif"][id][0]
-                  : nftsImgs["newton"][id][0]
-              }                
-              containerClassName="aspect-w-11 aspect-h-12 rounded-3xl overflow-hidden"
+                src={
+                  type === "alif"
+                    ? nftsImgs["alif"][id][0]
+                    : nftsImgs["newton"][id][0]
+                }
+                containerClassName="aspect-w-11 aspect-h-12 rounded-3xl overflow-hidden"
               />
               {/* META TYPE */}
               <ItemTypeVideoIcon className="absolute left-3 top-3  w-8 h-8 md:w-10 md:h-10" />

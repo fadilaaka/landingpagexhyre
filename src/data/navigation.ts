@@ -121,9 +121,14 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
 export const NAVIGATION_DEMO_3: NavItemType[] = [
   {
     id: ncNanoId(),
-    href: "#",
-    name: "Discover",
-    type: "dropdown",
-    children: otherPageChildExplore,
+    href: "http://exchanger.bosscamel.com/swap",
+    name: "Swap",
+    targetBlank: true,
+  },
+  {
+    id: ncNanoId(),
+    href: "http://exchanger.bosscamel.com/proposals",
+    name: "Voting",
+    targetBlank: true,
   },
 ];

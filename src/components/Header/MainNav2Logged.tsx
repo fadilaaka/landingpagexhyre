@@ -74,38 +74,40 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             </form>
           </div> */}
         </div>
-        <a type="button" href="http://localhost:3000/swap" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Swap</a>
-        <a type="button" href="http://localhost:3000/proposals" target="_blank" rel="noreferrer" className="text-black hover:text-slate-300 hover:underline dark:text-white dark:hover:opacity-50">Voting</a>
-        <SwitchDarkMode />
+       
+        {/* <SwitchDarkMode /> */}
         <div className="flex-shrink-0 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1">
           {/* <ButtonPrimary> */}
+         
+          {/* </ButtonPrimary> */}
+        {/* <h3 className="font-semibold">Balance : <span className="text-teal-600">{`${balanceInEth} ETH`}</span></h3> */}
+
+          <div className="hidden items-center xl:flex space-x-2">
+            <Navigation />
+            <div className="hidden sm:block h-6 border-l border-neutral-300 dark:border-neutral-6000"></div>
+            <div className="flex">
+              <SwitchDarkMode />
+              {/* <NotifyDropdown /> */}
+            </div>
+            {/* <div></div>
+            <ButtonPrimary sizeClass="px-4 py-2 sm:px-5">Create</ButtonPrimary>
+            <div></div>
+            <AvatarDropdown /> */}
+          </div>
+
           <NcDropDownWallet
-          className="ttnc-ButtonSecondary border bg-white border-neutral-200 dark:border-white-600 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm sm:text-base font-medium px-4 py-3 sm:px-6 rounded-full"
+          className="ttnc-ButtonSecondary border bg-white border-neutral-200 dark:border-white-600 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm sm:text-base font-medium lg:px-4 lg:py-3 px-3 py-3 rounded-full"
           renderTrigger={() => (
             <div className="flex flex-row justify-center items-center">
               <FaWallet/>
-              <span className="ml-2">MyWallet</span>
+              <span className="ml-2 hidden md:block">MyWallet</span>
             </div>
           )}
           panelMenusClass="origin-top-right !-right-5 !w-40 sm:!w-52"
           onClick={() => null}
           data={{balance, address}}
           />
-          {/* </ButtonPrimary> */}
-        {/* <h3 className="font-semibold">Balance : <span className="text-teal-600">{`${balanceInEth} ETH`}</span></h3> */}
 
-          {/* <div className="hidden items-center xl:flex space-x-2">
-            <Navigation />
-            <div className="hidden sm:block h-6 border-l border-neutral-300 dark:border-neutral-6000"></div>
-            <div className="flex">
-              <SwitchDarkMode />
-              <NotifyDropdown />
-            </div>
-            <div></div>
-            <ButtonPrimary sizeClass="px-4 py-2 sm:px-5">Create</ButtonPrimary>
-            <div></div>
-            <AvatarDropdown />
-          </div> */}
           <div className="flex items-center space-x-3 xl:hidden">
             {/* <NotifyDropdown />
             <AvatarDropdown /> */}

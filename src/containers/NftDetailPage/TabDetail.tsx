@@ -5,7 +5,7 @@ import Avatar from "shared/Avatar/Avatar";
 import VerifyIcon from "components/VerifyIcon";
 import getRandomInt from "utils/getRandomInt";
 
-const TabDetail = ({data}: any) => {
+const TabDetail = ({ data }: any) => {
   const TABS = ["Ownership History", "Provenance", "Owner"];
 
   const renderTabBidHistory = () => {
@@ -19,7 +19,11 @@ const TabDetail = ({data}: any) => {
             }`}
           >
             <div className="flex items-center">
-              <Avatar sizeClass="h-10 w-10" radius="rounded-full" containerClassName="-mt-6" />
+              <Avatar
+                sizeClass="h-10 w-10"
+                radius="rounded-full"
+                containerClassName="-mt-6"
+              />
               <span className="ml-4 text-neutral-500 dark:text-neutral-400 flex flex-col w-full">
                 <span className="flex items-center text-sm relative">
                   {/* <span className="">
@@ -36,11 +40,14 @@ const TabDetail = ({data}: any) => {
                       {item.name}
                     </span>
                   </div>
-                  <div className="inline-block absolute price mt-7">
+                  <div className="absolute price mt-7 flex">
                     {/* <span className="ml-1">Last :</span>
                     <span className="ml-1 text-green-500">1000 REX</span> <span className="mx-1">||</span> */}
                     <span className="ml-1">Price :</span>
-                    <span className="ml-1 text-green-500">{item.price} REX</span>
+                    <span className="ml-1 text-green-500 flex">
+                      <span className="truncate w-2/3 block">{item.price}</span>{" "}
+                      <span className="block">REX</span>
+                    </span>
                   </div>
                 </span>
                 <span className="text-xs mt-8">{item.time}</span>
@@ -121,7 +128,9 @@ const TabDetail = ({data}: any) => {
     <div className="w-full pdx-2 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex justify-start pd-1 space-x-2.5 rounded-full bordedr border-neutral-300 dark:border-neutral-500">
-          <h3 className="font-semibold text-black dark:text-white text-xl">Ownership History</h3>
+          <h3 className="font-semibold text-black dark:text-white text-xl">
+            Ownership History
+          </h3>
           {TABS.map(
             (tab) => ""
             // <Tab
