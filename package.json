@@ -1,7 +1,7 @@
 {
-  "name": "ciscryp",
-  "version": "0.2.1",
-  "homepage": ".",
+  "name": "xhyre",
+  "version": "0.0.1",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@glidejs/glide": "^3.5.2",

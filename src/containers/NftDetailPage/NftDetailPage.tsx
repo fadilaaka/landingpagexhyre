@@ -200,7 +200,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
                             </span>
                             <FormItem label="Valuation">
                               <Input
-                                placeholder="%"
+                                placeholder="0"
                                 type="number"
                                 onChange={(e: any) => inputChangedHandler(e)}
                                 value={percentage}
@@ -315,10 +315,14 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             </div> */}
             <div className="thrasehold flex w-full relative lg:absolute mb-5">
               <span className="text-green-500 justify-end absolute lg:static -bottom-3">
-                <span className="truncate w-[6em] hover:text-clip">{totalREX}</span>
+                {
+                  totalREX === 0 ? <span>0</span> : 
+                  totalREX === maxREX ? <span>{totalREX}</span> : 
+                  <span>{totalREX.toFixed(3)}</span>
+                }
                 <span>&nbsp;REX</span>
               </span>
-              <span className="text-sm text-slate-400 lg:pl-0 pl-28 absolute lg:relative -bottom-3 lg:-bottom-[0.18rem]">&nbsp;
+              <span className="text-sm text-slate-400 lg:pl-0 pl-24 absolute lg:relative -bottom-3 lg:-bottom-[0.18rem]">&nbsp;
                 {`collected from ${
                   type === "alif"
                     ? nftsImgs["alif"][id][2]
@@ -336,7 +340,7 @@ const NftDetailPage: FC<NftDetailPageProps> = ({
             </div>
             <span className="text-sm text-neutral-500 dark:text-neutral-400  sm:ml-4 justify-center absolute lg:static right-0 top-10 lg:top-8 lg:w-28">
               {`${
-                type == "alif"
+                type === "alif"
                   ? nftsImgs["alif"][id][3]
                   : nftsImgs["newton"][id][3]
               } days left`}

@@ -1,12 +1,13 @@
-import React, { FC, Fragment } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Link, useParams } from "react-router-dom";
-import {FaEthereum} from "react-icons/fa"
+import { FaEthereum } from "react-icons/fa";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 
 // type Param = {
 //   data: any;
 // }
+
 export interface NcDropDownItem {
   id: string;
   name: string;
@@ -37,9 +38,28 @@ const NcDropDownWallet: FC<NcDropDownProps> = ({
   renderItem,
   onClick,
 }) => {
-  // const {data} : Param = useParams();
-  // console.log(data);
-  
+  const [usdExRate, setUsdExRate] = useState(0);
+  const GetUSDExchangeRate = async () => {
+    var requestOptions: any = { method: "GET", redirect: "follow" };
+    return fetch(
+      "https://api.coinbase.com/v2/exchange-rates?currency=ETH",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        return result.data.rates.USD;
+      })
+      .catch((error) => {
+        return "error" + error;
+      })
+      .then((res: any) => {
+        setUsdExRate(parseFloat(res) * data.balance);
+        console.log("usd", parseFloat(res) * data.balance);
+      });
+  };
+
+  GetUSDExchangeRate();
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button className={className} title={title}>
@@ -76,18 +96,35 @@ const NcDropDownWallet: FC<NcDropDownProps> = ({
         <Menu.Items
           className={`px-1 py-3 text-sm text-neutral-6000 dark:text-neutral-300 border-2 dark:border-white-400 absolute ${panelMenusClass} right-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl shadow-lg dark:ring-white ring-opacity-5 dark:ring-opacity-10 z-30`}
         >
-            <div className="flex flex-col mb-8 px-4">
-              <h1 className="text-black dark:text-white self-center">Account 1</h1>
-              <span className="text-slate-400 dark:text-slate-300 truncate">{data.address}</span>
-            </div>
-            <div className="flex flex-col justify-center items-center mb-8">
-              <FaEthereum className="mb-8" size={40}/>
-              <h1 className="text-black dark:text-white">{data.balance} ETH</h1>
-              <h3 className="text-slate-400 dark:text-slate-300">$1.088,24</h3>
-            </div>
-            <div className="flex justify-center">
-              <ButtonPrimary href="/dashboard-user">Dashboard User</ButtonPrimary>
-            </div>
+          <div className="flex flex-col mb-8 px-4">
+            <h1 className="text-black dark:text-white self-center font-semibold text-base">
+              Account 1
+            </h1>
+            <span className="text-slate-400 dark:text-slate-300 truncate">
+              {data.address}
+            </span>
+          </div>
+          <div className="flex flex-col justify-center items-center mb-8">
+            <FaEthereum className="mb-8" size={40} />
+            <h1 className="text-green-500 font-semibold text-base lg:text-lg">
+              {data.balance + " ETH"}
+            </h1>
+            <h3 className="text-slate-400 dark:text-slate-300">
+              {usdExRate.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                minimumFractionDigits: 2,
+              })}
+            </h3>
+          </div>
+          <div className="flex justify-center">
+            <a
+              className="ttnc-ButtonPrimary disabled:bg-opacity-70 bg-primary-6000 hover:bg-primary-700 text-neutral-50 px-3 lg:px-6 py-1.5 rounded-full text-sm "
+              href="/dashboard-user"
+            >
+              Dashboard User
+            </a>
+          </div>
         </Menu.Items>
       </Transition>
     </Menu>

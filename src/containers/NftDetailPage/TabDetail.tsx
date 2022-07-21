@@ -45,8 +45,8 @@ const TabDetail = ({ data }: any) => {
                     <span className="ml-1 text-green-500">1000 REX</span> <span className="mx-1">||</span> */}
                     <span className="ml-1">Price :</span>
                     <span className="ml-1 text-green-500 flex">
-                      <span className="truncate w-[5em] block">{item.price}</span>{" "}
-                      <span className="block">&nbsp;REX</span>
+                      <span>{parseFloat(item.price).toFixed(3)}</span>
+                      <span>&nbsp;REX</span>
                     </span>
                   </div>
                 </span>

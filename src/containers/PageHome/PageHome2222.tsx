@@ -20,7 +20,7 @@ function PageHome2() {
   return (
     <div className="nc-PageHome2 relative overflow-hidden">
       <Helmet>
-        <title>Ciscryp || NFT Marketplace Template</title>
+        <title>Xhyre || NFT Marketplace</title>
       </Helmet>
       {/* GLASSMOPHIN */}
       <BgGlassmorphism />

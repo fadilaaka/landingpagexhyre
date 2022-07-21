@@ -13,7 +13,7 @@ import { Popover } from "@headlessui/react";
 import ButtonDropDownShare from "components/ButtonDropDownShare";
 import NcDropDown from "shared/NcDropDown/NcDropDown";
 import NcDropDownWallet from "shared/NcDropDownWallet/NcDropDownWallet";
-import {FaWallet} from 'react-icons/fa'
+import { FaWallet } from "react-icons/fa";
 import { NAVIGATION_DEMO_3 } from "data/navigation";
 
 export interface MainNav2LoggedProps {}
@@ -23,22 +23,22 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
   const network = "rinkeby"; // use rinkeby testnet
   const provider = ethers.getDefaultProvider(network);
   const address = "0x58B7514792A5fB080E3C7340230672fB23641CC3";
-  const [balance, setbalance] = useState('')
+  const [balance, setbalance] = useState("");
 
   provider.getBalance(address).then((balance: any) => {
     // convert a currency unit from wei to ether
     let balanceInEth = ethers.utils.formatEther(balance);
-    console.log(`balance: ${balanceInEth} ETH`);
-  
-    console.log(balanceInEth);
+    // console.log(`balance: ${balanceInEth} ETH`);
+
+    // console.log(balanceInEth);
     setbalance(balanceInEth);
   });
-  
+
   return (
     <div className={`nc-MainNav2Logged relative z-10 ${"onTop"}`}>
       <div className="container py-1 relative flex justify-between items-center space-x-4 xl:space-x-8">
         <div className="flex justify-start flex-grow items-center space-x-3 sm:space-x-8 lg:space-x-10">
-          <Logo imgDropShadow={true}/>
+          <Logo imgDropShadow={true} />
           {/* <div className="hidden sm:block flex-grow max-w-xs">
             <form action="" method="POST" className="relative">
               <Input
@@ -74,13 +74,13 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             </form>
           </div> */}
         </div>
-       
+
         {/* <SwitchDarkMode /> */}
         <div className="flex-shrink-0 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1">
           {/* <ButtonPrimary> */}
-         
+
           {/* </ButtonPrimary> */}
-        {/* <h3 className="font-semibold">Balance : <span className="text-teal-600">{`${balanceInEth} ETH`}</span></h3> */}
+          {/* <h3 className="font-semibold">Balance : <span className="text-teal-600">{`${balanceInEth} ETH`}</span></h3> */}
 
           <div className="hidden items-center xl:flex space-x-2">
             <Navigation />
@@ -96,16 +96,16 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
           </div>
 
           <NcDropDownWallet
-          className="ttnc-ButtonSecondary border bg-white border-neutral-200 dark:border-white-600 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm sm:text-base font-medium lg:px-4 lg:py-3 px-3 py-3 rounded-full"
-          renderTrigger={() => (
-            <div className="flex flex-row justify-center items-center">
-              <FaWallet/>
-              <span className="ml-2 hidden md:block">MyWallet</span>
-            </div>
-          )}
-          panelMenusClass="origin-top-right !-right-5 !w-40 sm:!w-52"
-          onClick={() => null}
-          data={{balance, address}}
+            className="ttnc-ButtonSecondary border bg-white border-neutral-200 dark:border-white-600 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm sm:text-base font-medium lg:px-4 lg:py-3 px-3 py-3 rounded-full"
+            renderTrigger={() => (
+              <div className="flex flex-row justify-center items-center">
+                <FaWallet />
+                <span className="ml-2 hidden md:block">MyWallet</span>
+              </div>
+            )}
+            panelMenusClass="origin-top-right !-right-5 !w-40 sm:!w-52"
+            onClick={() => null}
+            data={{ balance, address }}
           />
 
           <div className="flex items-center space-x-3 xl:hidden">

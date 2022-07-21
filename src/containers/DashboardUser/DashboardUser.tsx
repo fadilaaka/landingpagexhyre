@@ -47,14 +47,14 @@ const DashboardUser: FC<AuthorPageProps> = ({ className = "" }) => {
           <div className="relative bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row justify-center">
             <div className="max-w-screen-sm text-center">
               <h2 className="inline-flex items-center text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                <span>Account</span>
+                <span>Account 1</span>
                 <VerifyIcon
                   className="ml-2"
                   iconClass="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"
                 />
               </h2>
               <div className="flex items-center text-sm justify-center font-medium space-x-2.5 mt-2.5 text-green-600 cursor-pointer">
-                <span className="text-neutral-700 dark:text-neutral-300">
+                <span className="text-slate-400 dark:text-slate-300 truncate">
                   0x58B75147987R7DCV90FDS97F432FR45BA21{" "}
                 </span>
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none">

@@ -51,7 +51,7 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
       data-nc-id="PageUploadItem"
     >
       <Helmet>
-        <title>Create Item || NFT React Template</title>
+        <title>Create Item || NFT React</title>
       </Helmet>
       <div className="container">
         <div className="my-12 sm:lg:my-16 lg:my-24 max-w-4xl mx-auto space-y-8 sm:space-y-10">
@@ -123,7 +123,7 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
             {/* ---- */}
             <FormItem
               label="External link"
-              desc="Ciscrypt will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details."
+              desc="Xhyre will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details."
             >
               <div className="flex">
                 <span className="inline-flex items-center px-3 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">

@@ -63,7 +63,7 @@ const PageConnectWallet: FC<PageConnectWalletProps> = ({ className = "" }) => {
       data-nc-id="PageConnectWallet"
     >
       <Helmet>
-        <title>Connect Wallet || NFT React Template</title>
+        <title>Connect Wallet || NFT React</title>
       </Helmet>
       <div className="container">
         <div className="my-12 sm:lg:my-16 lg:my-24 max-w-3xl mx-auto space-y-8 sm:space-y-10">
