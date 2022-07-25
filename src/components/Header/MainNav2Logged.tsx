@@ -15,6 +15,7 @@ import NcDropDown from "shared/NcDropDown/NcDropDown";
 import NcDropDownWallet from "shared/NcDropDownWallet/NcDropDownWallet";
 import { FaWallet } from "react-icons/fa";
 import { NAVIGATION_DEMO_3 } from "data/navigation";
+import logoTSD from "images/LOGO-03.png";
 
 export interface MainNav2LoggedProps {}
 
@@ -107,6 +108,11 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             onClick={() => null}
             data={{ balance, address }}
           />
+
+          <a href="https://bosscamel.com">
+            <img src={logoTSD} width={40} style={{marginLeft: 20, cursor: 'pointer'}} />
+          </a>
+            
 
           <div className="flex items-center space-x-3 xl:hidden">
             {/* <NotifyDropdown />

@@ -42,101 +42,122 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                     high rise commercil
                     hospitality
                     lifestyle */}
-            <div className="flex flex-row items-center lg:flex-col lg:items-center justify-between">
-              <div className="lg:w-full flex lg:px-16 flex-col-reverse lg:flex-row">
-                <div className="flex flex-col w-full pr-4 pl-4 lg:w-64 relative select-none flex-end">
-                  <div
-                    className="group flex flex-col items-center  lg:items-start p-5 lg:p-0"
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
+            <div className="flex flex-col lg:flex-row lg:space-y-0 mx-16 my-8 lg:items-center relative">
+              <div className="flex-1 w-full">
+                <h1
+                  className="leading-tight text-2xl lg:text-[2rem] font-semibold text-black text-left dark:text-white leading-small mb-4 w-[13em]"
+                  data-aos="fade-down"
+                  data-aos-duration="2000"
+                >
+                  The First Secured Fractionalized Real Estate Exchange
+                  Marketing in The World
+                </h1>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </span>
+                <div
+                  className="flex flex-col lg:flex-row items-start justify-start space-x-0 lg:space-x-8 mt-8"
+                  data-aos="zoom-in"
+                  data-aos-duration="1500"
+                  data-aos-delay="1500"
+                >
+                  <ButtonPrimary
+                    className="bg-[#FFD447] opacity-100 hover:opacity-50 hover:bg-[#FFD447] dark:bg-[##D9A443] lg:mb-0 mb-3 w-90 lg:w-auto"
+                    href="/primary-market/newton"
                   >
-                    <div className="opacity-100 group-hover:opacity-50 lg:float-right justify-center flex">
-                      <img
-                        style={{ width: "75%", margin: 0 }}
-                        src={imageAlif}
-                        alt="hero"
-                        className="float-none lg:float-right"
-                      />
-                    </div>
-                    <span className="opacity-25 group-hover:opacity-100 text-white group-hover:text-white bg-black absolute bottom-[2em] px-4 py-2 rounded-md text-center">
-                      Landed House
+                    <FaStore color="#000000" />
+                    <span className="ml-2 text-center text-black text-[12px]">
+                      Primary Market
                     </span>
-                  </div>
-                  <div
-                    className="group flex flex-col items-center  lg:items-start p-5 lg:p-0"
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
+                  </ButtonPrimary>
+                  <ButtonPrimary
+                    className="bg-[#000000] opacity-100 hover:opacity-50 hover:bg-[#000000] dark:bg-[#FAF3E3] w-90 lg:w-auto"
+                    href="/secondary-market/newton"
                   >
-                    <div className="opacity-100 group-hover:opacity-50 lg:float-right justify-center flex">
-                      <img
-                        style={{ width: "75%" }}
-                        src={imageBahama}
-                        alt="hero"
-                        className="float-none lg:float-right"
-                      />
-                    </div>
-                    <span className="opacity-25 group-hover:opacity-100 text-white group-hover:text-white bg-black absolute bottom-[2em] px-4 py-2 rounded-md text-center text-[12px]">
-                      High Rise Commercial
+                    <FaStoreAlt className="dark:text-black" />
+                    <span className="ml-2 text-center text-white dark:text-black text-[12px]">
+                      Secondary Market
                     </span>
-                  </div>
-                  <div
-                    className="group flex flex-col items-center  lg:items-start p-5 lg:p-0"
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
-                  >
-                    <div className="opacity-100 group-hover:opacity-50 lg:float-right justify-center flex">
-                      <img
-                        style={{ width: "75%" }}
-                        src={imageCyprus}
-                        alt="hero"
-                        className="float-none lg:float-right"
-                      />
-                    </div>
-                    <span className="opacity-25 group-hover:opacity-100 text-white group-hover:text-white bg-black absolute bottom-[2em] px-4 py-2 rounded-md text-center">
-                      Lifestyle
-                    </span>
-                  </div>
+                  </ButtonPrimary>
                 </div>
-                <div className="flex-1 justify-center text-center my-4">
-                  <span
-                    className="text-2xl lg:text-[2rem] font-semibold text-black text-center dark:text-white leading-normal block w-5/6 lg:w-full mx-auto"
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                  >
-                    The First Secured Fractionalized Real Estate Exchange
-                    Marketing in The World
-                  </span>
-                  <div
-                    className="flex flex-col lg:flex-row items-center justify-center space-x-0 lg:space-x-12 mt-20"
-                    data-aos="zoom-in"
-                    data-aos-duration="1500"
-                    data-aos-delay="1500"
-                  >
-                    <ButtonPrimary
-                      className="bg-[#FFD447] opacity-100 hover:opacity-50 hover:bg-[#FFD447] dark:bg-[##D9A443] lg:mb-0 mb-3 w-80 lg:w-auto"
-                      href="/primary-market/newton"
-                    >
-                      <FaStore color="#000000" />
-                      <span className="ml-2 text-center text-black">
-                        Primary Market
-                      </span>
-                    </ButtonPrimary>
-                    <ButtonPrimary
-                      className="bg-[#000000] opacity-100 hover:opacity-50 hover:bg-[#000000] dark:bg-[#FAF3E3] w-80 lg:w-auto"
-                      href="/secondary-market/newton"
-                    >
-                      <FaStoreAlt className="dark:text-black" />
-                      <span className="ml-2 text-center text-white dark:text-black">
-                        Secondary Market
-                      </span>
-                    </ButtonPrimary>
+              </div>
+              <div className="flex flex-row items-center">
+                <div
+                  className="group flex flex-col items-center lg:items-start p-5 lg:p-0"
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                >
+                  <div className="opacity-100 group-hover:opacity-50 lg:float-right justify-end flex">
+                    <img
+                      style={{ width: "75%" }}
+                      src={imageBahama}
+                      alt="hero"
+                    />
                   </div>
+                  {/* <span className="opacity-25 group-hover:opacity-100 text-white group-hover:text-white bg-black absolute bottom-[2em] px-4 py-2 rounded-md text-center text-[12px]">
+                    High Rise Commercial
+                  </span> */}
+                </div>
+                <div
+                  className="group flex flex-col items-center lg:items-center p-5 lg:p-0"
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                >
+                  <div className="opacity-100 group-hover:opacity-50 justify-center flex">
+                    <img
+                      style={{ width: "100%"}}
+                      src={imageAlif}
+                      alt="hero"                    
+                    />
+                  </div>
+                  {/* <span className="opacity-25 group-hover:opacity-100 text-white group-hover:text-white bg-black absolute bottom-[2em] px-4 py-2 rounded-md text-center">
+                    Landed House
+                  </span> */}
+                </div>
+                <div
+                  className="group flex flex-col items-center  lg:items-start p-5 lg:p-0"
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                >
+                  <div className="opacity-100 group-hover:opacity-50 lg:float-right justify-start flex">
+                    <img
+                      style={{ width: "75%" }}
+                      src={imageCyprus}
+                      alt="hero"
+                    />
+                  </div>
+                  {/* <span className="opacity-25 group-hover:opacity-100 text-white group-hover:text-white bg-black absolute bottom-[2em] px-4 py-2 rounded-md text-center">
+                    Lifestyle
+                  </span> */}
+                </div>
+              </div>
+            </div>
+            <div className="text-center justify-center align-center self-center border-t-2">
+              <h2 className="font-bold text-[20px] my-4">Register your assets in Xhyre</h2>
+              <div className="mx-auto my-4 w-1/2">
+                <span className="text-sm justify-center text-center align-center items-center self-center content-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</span>
+              </div>
+              <div className="mt-4 mb-12">
+                <ButtonPrimary
+                  className="bg-[#FFD447] opacity-100 hover:opacity-50 hover:bg-[#FFD447] dark:bg-[##D9A443] lg:mb-0 mb-3 w-90 lg:w-auto"
+                  // href="/primary-market/newton"
+                >
+                  <span className="ml-2 text-center text-black text-[12px]">
+                    Start Preregistration
+                  </span>
+                </ButtonPrimary>
+              </div>
+            </div>
+            <div className="flex flex-row lg:flex-col justify-between">
+              <div className="lg:w-full flex lg:px-16 lg:flex-row">
+                <div className="flex-1 my-4">
                   <div
                     className="flex flex-col lg:flex-row text-justify"
                     data-aos="fade-down"
                     data-aos-duration="1000"
                   >
-                    <div className="flex-initial w-full lg:w-1/2 px-6 mt-[70px]">
+                    {/* <div className="flex-initial w-full lg:w-1/2 px-6 mt-[70px]">
                       <h2 className="font-bold underline mb-2">Primary Market</h2>
                       <span className="text-left">
                         NFT based fractional property primary marketplace by
@@ -153,22 +174,15 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                         fractional property ownership, besides the respective
                         percentage of monthly rental income
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
-                {/* <div className="flex-shrink-0 lg:w-1/2 flex flex-col items-center space-y-8 sm:space-y-10 pr-4 pl-4 justify-center">
-                            <h3 className="font-semibold text-4xl md:text-5xl xl:text-6xl !leading-[114%]">
-                                Hassle~free transfer of property ownership
-                            </h3> 
-                            the first secured real estate exchange market in the world
-                            <span className="text-base md:text-lg text-neutral-500 dark:text-neutral-400">
-                                With NFTs, the transaction process is streamlined, allowing you to
-                                assume ownership of a piece of real estate within minutes.
-                            </span>
-                            </div> */}
+                <div className="flex flex-row w-full pr-4 pl-4 lg:w-64 relative select-none flex-end">
+                  
+                </div>
               </div>
             </div>
-            <div className="flex flex-col px-6 lg:px-0 lg:flex-row lg:mx-8 justify-center items-center mx-auto mt-16 lg:mt-10">
+            {/* <div className="flex flex-col px-6 lg:px-0 lg:flex-row lg:mx-8 justify-center items-center mx-auto mt-16 lg:mt-10">
               <div className="flex flex-col text-justify w-full mx-6">
                 <div className="flex flex-col items-center ">
                   <img
@@ -190,7 +204,6 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                     className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3] w-5/6 lg:w-auto"
                     href="/primary-market/alif"
                   >
-                    {/* <FaStore className="text-black"/> */}
                     <span className="text-center text-black">
                       Alif Homes Primary Market
                     </span>
@@ -199,7 +212,6 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                     className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3]  w-5/6 lg:w-auto lg:mt-0 mt-3"
                     href="/secondary-market/alif"
                   >
-                    {/* <FaStoreAlt className="text-black"/> */}
                     <span className="text-center text-black">
                       Alif Homes Secondary Market
                     </span>
@@ -227,7 +239,6 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                     className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3] w-5/6 lg:w-auto"
                     href="/primary-market/newton"
                   >
-                    {/* <FaStore className="text-black"/> */}
                     <span className="text-center text-black">
                       Newton Primary Market
                     </span>
@@ -236,14 +247,13 @@ const LandingPage: FC<SectionHero2Props> = ({ className = "", children }) => {
                     className="bg-[#ffffff] border-2 border-black opacity-100 hover:opacity-50 hover:bg-[#ffffff] dark:bg-[#FAF3E3] w-5/6 lg:w-auto lg:mt-0 mt-3" 
                     href="/secondary-market/newton"
                   >
-                    {/* <FaStoreAlt className="text-black"/> */}
                     <span className="text-center text-black">
                       Newton Secondary Market
                     </span>
                   </ButtonPrimary>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       ) : (
